@@ -11,9 +11,12 @@
 
         <!-- Profile / About -->
         <div class="profile">
-            <div class="avatar">LR</div>
+            <div class="avatar">
+                <img src="images/avatar.jpg" alt="LyRooy">
+            </div>
             <h1>Cześć, jestem LyRooy</h1>
-            <p>Programista &amp; hobbysta — zbiór moich projektów</p>
+            <p class="profile-realname">Dawid Łyczko</p>
+            <p>Programista stron internetowych — zbiór moich projektów</p>
         </div>
 
         <!-- Projects hosted on 110187.xyz domain -->
@@ -23,7 +26,7 @@
             <a class="card" href="https://movie-tracker.110187.xyz" target="_blank">
                 <div class="card-info">
                     <span class="card-title">Movie Tracker</span>
-                    <span class="card-desc">Wersja inżynierska</span>
+                    <span class="card-desc">Aplikacja do zarządzania listą filmów i seriali - praca inżynierska</span>
                 </div>
                 <span class="badge badge-domain">110187.xyz</span>
                 <span class="card-arrow">&#8599;</span>
@@ -32,7 +35,7 @@
             <a class="card" href="https://movie-tracker.mstr.110187.xyz" target="_blank">
                 <div class="card-info">
                     <span class="card-title">Movie Tracker</span>
-                    <span class="card-desc">Wersja magisterska</span>
+                    <span class="card-desc">Aplikacja do zarządzania listą filmów i seriali + rekomendacje - praca magisterska</span>
                 </div>
                 <span class="badge badge-domain">110187.xyz</span>
                 <span class="card-arrow">&#8599;</span>
@@ -41,7 +44,7 @@
             <a class="card" href="https://arcade.110187.xyz" target="_blank">
                 <div class="card-info">
                     <span class="card-title">Projekt Arcade</span>
-                    <span class="card-desc">Kolekcja gier i mini-projektów</span>
+                    <span class="card-desc">Kolekcja gier - aktualnie: Space Invaders (projekt zaliczeniowy)</span>
                 </div>
                 <span class="badge badge-domain">110187.xyz</span>
                 <span class="card-arrow">&#8599;</span>
@@ -56,7 +59,7 @@
                 <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
                     <a class="card-info" href="https://lyrooy.github.io/mecha-klub/" target="_blank" style="text-decoration: none; color: inherit;">
                         <span class="card-title">Mecha-Klub</span>
-                        <span class="card-desc">Strona klubu / fan-page</span>
+                        <span class="card-desc">Projekt zaliczeniowy - optymalizacja stron (analiza SEO)</span>
                     </a>
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span class="badge badge-ghpages">GitHub Pages</span>
@@ -76,7 +79,7 @@
                 <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
                     <a class="card-info" href="https://lyrooy.github.io/historical-ciphers-demo/" target="_blank" style="text-decoration: none; color: inherit;">
                         <span class="card-title">Historical Ciphers Demo</span>
-                        <span class="card-desc">Interaktywne demo szyfrów historycznych</span>
+                        <span class="card-desc">Projekt zespołowy - interaktywne demo szyfrów historycznych</span>
                     </a>
                     <div style="display: flex; align-items: center; gap: 8px;">
                         <span class="badge badge-ghpages">GitHub Pages</span>
@@ -98,10 +101,18 @@
         </div>
 
         <!-- GitHub profile footer -->
-        <a class="github-profile" href="https://github.com/lyrooy" target="_blank">
-            <svg width="18" height="18" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-            github.com/lyrooy
-        </a>
+        <div class="github-profiles">
+            <a class="github-profile" href="https://github.com/lyrooy" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                github.com/lyrooy
+                <span class="github-profile-tag">prywatny</span>
+            </a>
+            <a class="github-profile" href="https://github.com/lyczkod" target="_blank">
+                <svg width="18" height="18" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+                github.com/lyczkod
+                <span class="github-profile-tag">oficjalny</span>
+            </a>
+        </div>
 
     </div>
 </body>
