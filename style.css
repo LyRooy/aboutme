@@ -222,9 +222,9 @@ body {
 
 .github-profile-tag {
     font-size: 0.7rem;
-    color: #444;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
+    color: #b0b8c8;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.2);
     border-radius: 20px;
     padding: 1px 7px;
     text-transform: uppercase;
