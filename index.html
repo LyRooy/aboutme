@@ -12,7 +12,7 @@
     <meta name="theme-color" content="#0f0f1a">
     <title>LyRooy - Dawid Łyczko</title>
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
@@ -33,24 +33,30 @@
                 <nav class="sidebar-nav">
                     <button class="nav-item active" data-tab="start">
                         <i class="ph ph-sparkle"></i>
-                        <span>Start</span>
+                        <span data-i18n="nav.start">Start</span>
                     </button>
                     <button class="nav-item" data-tab="projekty">
                         <i class="ph ph-code"></i>
-                        <span>Projekty</span>
+                        <span data-i18n="nav.projects">Projekty</span>
                     </button>
                     <button class="nav-item" data-tab="cv">
                         <i class="ph ph-read-cv-logo"></i>
-                        <span>CV</span>
+                        <span data-i18n="nav.cv">CV</span>
                     </button>
                     <button class="nav-item" data-tab="linki">
                         <i class="ph ph-share-network"></i>
-                        <span>Linki</span>
+                        <span data-i18n="nav.links">Linki</span>
                     </button>
                 </nav>
             </div>
 
             <footer class="sidebar-footer">
+                <div class="lang-switch" aria-label="Wybór języka / Language selection">
+                    <i class="ph ph-translate lang-icon"></i>
+                    <button class="lang-btn active" data-lang="pl">PL</button>
+                    <span class="lang-sep">/</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
                 <p>&copy; 2026 Dawid Łyczko (LyRooy)</p>
             </footer>
         </aside>
@@ -63,14 +69,14 @@
                 <section id="tab-start" class="tab-panel active">
                     <div class="hero-box">
                         <div class="hero-badge">Web Development &bull; AI &bull; Homelab</div>
-                        <h2>Cześć, jestem Dawid <span class="hero-subname">(LyRooy)</span></h2>
-                        <p class="hero-lead">
+                        <h2><span data-i18n="hero.greeting">Cześć, jestem Dawid</span> <span class="hero-subname">(LyRooy)</span></h2>
+                        <p class="hero-lead" data-i18n="hero.lead">
                             Zajmuję się tworzeniem stron oraz aplikacji internetowych. Interesuję się również sztuczną inteligencją (AI) i uczeniem maszynowym - szczególnie wykorzystaniem modeli AI w praktycznych projektach. Prywatnie jestem entuzjastą homelabingu oraz własnej infrastruktury serwerowej (self-hosting).
                         </p>
                     </div>
 
                     <div class="section">
-                        <div class="section-title">Podstawowe profile i repozytoria</div>
+                        <div class="section-title" data-i18n="start.profilesTitle">Podstawowe profile i repozytoria</div>
                         <div class="quick-links-grid">
                             <a class="card" href="https://github.com/lyrooy" target="_blank">
                                 <div class="card-icon">
@@ -78,10 +84,10 @@
                                 </div>
                                 <div class="card-info">
                                     <span class="card-title">github.com/lyrooy</span>
-                                    <span class="card-desc">Główne konto GitHub - bieżący kod, projekty własne i zespołowe</span>
+                                    <span class="card-desc" data-i18n="start.ghMainDesc">Główne konto GitHub - bieżący kod, projekty własne i zespołowe</span>
                                 </div>
                                 <div class="card-right">
-                                    <span class="badge badge-primary">główny</span>
+                                    <span class="badge badge-primary" data-i18n="badge.main">główny</span>
                                     <i class="ph ph-arrow-up-right card-arrow"></i>
                                 </div>
                             </a>
@@ -92,10 +98,10 @@
                                 </div>
                                 <div class="card-info">
                                     <span class="card-title">github.com/lyczkod</span>
-                                    <span class="card-desc">Konto do celów akademickich i oficjalnych - praca magisterska, replikacje artykułów</span>
+                                    <span class="card-desc" data-i18n="start.ghAcadDesc">Konto do celów akademickich i oficjalnych - praca magisterska, replikacje artykułów</span>
                                 </div>
                                 <div class="card-right">
-                                    <span class="badge badge-neutral">akademicki / oficjalny</span>
+                                    <span class="badge badge-neutral" data-i18n="badge.acadOfficial">akademicki / oficjalny</span>
                                     <i class="ph ph-arrow-up-right card-arrow"></i>
                                 </div>
                             </a>
@@ -106,7 +112,7 @@
                                 </div>
                                 <div class="card-info">
                                     <span class="card-title">huggingface.co/LyRooy</span>
-                                    <span class="card-desc">Konto Hugging Face - eksploracja i testy modeli AI</span>
+                                    <span class="card-desc" data-i18n="start.hfDesc">Konto Hugging Face - eksploracja i testy modeli AI</span>
                                 </div>
                                 <div class="card-right">
                                     <span class="badge badge-hf">Hugging Face</span>
@@ -120,18 +126,18 @@
                 <!-- TAB: PROJEKTY -->
                 <section id="tab-projekty" class="tab-panel">
                     <div class="tab-header">
-                        <h2>Zbiór moich projektów</h2>
-                        <p>Aplikacje internetowe, projekty akademickie oraz realizacje zespołowe</p>
+                        <h2 data-i18n="projects.title">Zbiór moich projektów</h2>
+                        <p data-i18n="projects.subtitle">Aplikacje internetowe, projekty akademickie oraz realizacje zespołowe</p>
                     </div>
 
                     <!-- Projects hosted on 110187.xyz domain -->
                     <div class="section">
-                        <div class="section-title">Projekty webowe na domenie (110187.xyz)</div>
+                        <div class="section-title" data-i18n="projects.domainSection">Projekty webowe na domenie (110187.xyz)</div>
 
                         <a class="card" href="https://movie-tracker.110187.xyz" target="_blank">
                             <div class="card-info">
                                 <span class="card-title">Movie Tracker</span>
-                                <span class="card-desc">Aplikacja do zarządzania listą filmów i seriali - praca inżynierska</span>
+                                <span class="card-desc" data-i18n="projects.mtEng">Aplikacja do zarządzania listą filmów i seriali - praca inżynierska</span>
                             </div>
                             <div class="card-right">
                                 <span class="badge badge-domain">110187.xyz</span>
@@ -142,7 +148,7 @@
                         <a class="card" href="https://movie-tracker-mstr.110187.xyz" target="_blank">
                             <div class="card-info">
                                 <span class="card-title">Movie Tracker</span>
-                                <span class="card-desc">Aplikacja do zarządzania listą filmów i seriali + rekomendacje - praca magisterska</span>
+                                <span class="card-desc" data-i18n="projects.mtMsc">Aplikacja do zarządzania listą filmów i seriali + rekomendacje - praca magisterska</span>
                             </div>
                             <div class="card-right">
                                 <span class="badge badge-domain">110187.xyz</span>
@@ -153,7 +159,7 @@
                         <a class="card" href="https://arcade.110187.xyz" target="_blank">
                             <div class="card-info">
                                 <span class="card-title">Space Invaders</span>
-                                <span class="card-desc">Projekt zaliczeniowy</span>
+                                <span class="card-desc" data-i18n="projects.spaceInvaders">Gra Space Invaders w wersji webowej - Projekt zaliczeniowy</span>
                             </div>
                             <div class="card-right">
                                 <span class="badge badge-domain">110187.xyz</span>
@@ -164,14 +170,14 @@
 
                     <!-- Projects hosted on GitHub Pages -->
                     <div class="section">
-                        <div class="section-title">Projekty webowe na GitHub Pages</div>
+                        <div class="section-title" data-i18n="projects.ghPagesSection">Projekty webowe na GitHub Pages</div>
 
                         <div class="card card-complex">
                             <a href="https://lyrooy.github.io/mecha-klub/" target="_blank" class="card-overlay-link" aria-label="Mecha-Klub"></a>
                             <div class="card-top-row">
                                 <div class="card-info">
                                     <span class="card-title">Mecha-Klub</span>
-                                    <span class="card-desc">Projekt zaliczeniowy - optymalizacja stron (analiza SEO)</span>
+                                    <span class="card-desc" data-i18n="projects.mechaKlub">Projekt zaliczeniowy - optymalizacja stron (analiza SEO)</span>
                                 </div>
                                 <div class="card-right" style="position: relative; z-index: 2;">
                                     <span class="badge badge-ghpages">GitHub Pages</span>
@@ -179,7 +185,7 @@
                                 </div>
                             </div>
                             <div class="card-authors" style="position: relative; z-index: 2;">
-                                <span>Współ-autorzy:</span>
+                                <span data-i18n="projects.coauthors">Współ-autorzy:</span>
                                 <a class="author-link" href="https://github.com/Glamie" target="_blank">
                                     <i class="ph-fill ph-github-logo"></i>
                                     Glamie
@@ -192,7 +198,7 @@
                             <div class="card-top-row">
                                 <div class="card-info">
                                     <span class="card-title">Historical Ciphers Demo</span>
-                                    <span class="card-desc">Projekt zespołowy - interaktywne demo szyfrów historycznych</span>
+                                    <span class="card-desc" data-i18n="projects.ciphers">Projekt zespołowy - interaktywne demo szyfrów historycznych</span>
                                 </div>
                                 <div class="card-right" style="position: relative; z-index: 2;">
                                     <span class="badge badge-ghpages">GitHub Pages</span>
@@ -200,7 +206,7 @@
                                 </div>
                             </div>
                             <div class="card-authors" style="position: relative; z-index: 2;">
-                                <span>Współ-autorzy:</span>
+                                <span data-i18n="projects.coauthors">Współ-autorzy:</span>
                                 <a class="author-link" href="https://github.com/Glamie" target="_blank">
                                     <i class="ph-fill ph-github-logo"></i>
                                     Glamie
@@ -218,12 +224,12 @@
                         <a class="github-profile" href="https://github.com/lyrooy" target="_blank">
                             <i class="ph-fill ph-github-logo"></i>
                             github.com/lyrooy
-                            <span class="github-profile-tag">główny</span>
+                            <span class="github-profile-tag" data-i18n="badge.main">główny</span>
                         </a>
                         <a class="github-profile" href="https://github.com/lyczkod" target="_blank">
                             <i class="ph-fill ph-github-logo"></i>
                             github.com/lyczkod
-                            <span class="github-profile-tag">akademicki</span>
+                            <span class="github-profile-tag" data-i18n="badge.acadShort">akademicki</span>
                         </a>
                     </div>
                 </section>
@@ -232,21 +238,21 @@
                 <section id="tab-cv" class="tab-panel">
                     <div class="tab-header">
                         <h2>Curriculum Vitae</h2>
-                        <p>Wykształcenie, doświadczenie oraz umiejętności techniczne</p>
+                        <p data-i18n="cv.subtitle">Wykształcenie, doświadczenie oraz umiejętności techniczne</p>
                     </div>
                     <div class="placeholder-box">
-                        <p>Sekcja CV jest w trakcie przygotowania.</p>
+                        <p data-i18n="cv.placeholder">Sekcja CV jest w trakcie przygotowania.</p>
                     </div>
                 </section>
 
                 <!-- TAB: LINKI -->
                 <section id="tab-linki" class="tab-panel">
                     <div class="tab-header">
-                        <h2>Linki i Social Media</h2>
-                        <p>Media społecznościowe, kontakt i inne miejsca w sieci</p>
+                        <h2 data-i18n="links.title">Linki i Social Media</h2>
+                        <p data-i18n="links.subtitle">Media społecznościowe, kontakt i inne miejsca w sieci</p>
                     </div>
                     <div class="placeholder-box">
-                        <p>Sekcja z odnośnikami społecznościowymi wkrótce się tutaj pojawi.</p>
+                        <p data-i18n="links.placeholder">Sekcja z odnośnikami społecznościowymi wkrótce się tutaj pojawi.</p>
                     </div>
                 </section>
 
@@ -255,6 +261,7 @@
     </div>
 
     <script>
+        // Tab navigation
         const navButtons = document.querySelectorAll('.nav-item');
         const tabPanels = document.querySelectorAll('.tab-panel');
 
@@ -275,10 +282,105 @@
             });
         });
 
-        // Obsługa bezpośredniego wejścia z hashem w URL (np. #projekty)
         const initialHash = window.location.hash.replace('#', '');
         if (['start', 'projekty', 'cv', 'linki'].includes(initialHash)) {
             switchTab(initialHash);
+        }
+
+        // Language switching (PL / EN)
+        const translations = {
+            pl: {
+                'nav.start': 'Start',
+                'nav.projects': 'Projekty',
+                'nav.cv': 'CV',
+                'nav.links': 'Linki',
+                'hero.greeting': 'Cześć, jestem Dawid',
+                'hero.lead': 'Zajmuję się tworzeniem stron oraz aplikacji internetowych. Interesuję się również sztuczną inteligencją (AI) i uczeniem maszynowym - szczególnie wykorzystaniem modeli AI w praktycznych projektach. Prywatnie jestem entuzjastą homelabingu oraz własnej infrastruktury serwerowej (self-hosting).',
+                'start.profilesTitle': 'Podstawowe profile i repozytoria',
+                'start.ghMainDesc': 'Główne konto GitHub - bieżący kod, projekty własne i zespołowe',
+                'start.ghAcadDesc': 'Konto do celów akademickich i oficjalnych - praca magisterska, replikacje artykułów',
+                'start.hfDesc': 'Konto Hugging Face - eksploracja i testy modeli AI',
+                'badge.main': 'główny',
+                'badge.acadOfficial': 'akademicki / oficjalny',
+                'badge.acadShort': 'akademicki',
+                'projects.title': 'Zbiór moich projektów',
+                'projects.subtitle': 'Aplikacje internetowe, projekty akademickie oraz realizacje zespołowe',
+                'projects.domainSection': 'Projekty webowe na domenie (110187.xyz)',
+                'projects.mtEng': 'Aplikacja do zarządzania listą filmów i seriali - praca inżynierska',
+                'projects.mtMsc': 'Aplikacja do zarządzania listą filmów i seriali + rekomendacje - praca magisterska',
+                'projects.spaceInvaders': 'Gra Space Invaders w wersji webowej - Projekt zaliczeniowy',
+                'projects.ghPagesSection': 'Projekty webowe na GitHub Pages',
+                'projects.mechaKlub': 'Projekt zaliczeniowy - optymalizacja stron (analiza SEO)',
+                'projects.ciphers': 'Projekt zespołowy - interaktywne demo szyfrów historycznych',
+                'projects.coauthors': 'Współ-autorzy:',
+                'cv.subtitle': 'Wykształcenie, doświadczenie oraz umiejętności techniczne',
+                'cv.placeholder': 'Sekcja CV jest w trakcie przygotowania.',
+                'links.title': 'Linki i Social Media',
+                'links.subtitle': 'Media społecznościowe, kontakt i inne miejsca w sieci',
+                'links.placeholder': 'Sekcja z odnośnikami społecznościowymi wkrótce się tutaj pojawi.'
+            },
+            en: {
+                'nav.start': 'Home',
+                'nav.projects': 'Projects',
+                'nav.cv': 'CV',
+                'nav.links': 'Links',
+                'hero.greeting': "Hi, I'm Dawid",
+                'hero.lead': 'I build websites and web applications. I am also interested in artificial intelligence (AI) and machine learning - especially applying AI models in practical projects. In my free time, I am a homelab and self-hosting enthusiast.',
+                'start.profilesTitle': 'Core profiles & repositories',
+                'start.ghMainDesc': 'Main GitHub account - active code, personal and team projects',
+                'start.ghAcadDesc': 'Academic & official account - Master\'s thesis, paper replications',
+                'start.hfDesc': 'Hugging Face account - exploring and testing AI models',
+                'badge.main': 'main',
+                'badge.acadOfficial': 'academic / official',
+                'badge.acadShort': 'academic',
+                'projects.title': 'My Projects',
+                'projects.subtitle': 'Web applications, academic projects, and team collaborations',
+                'projects.domainSection': 'Web projects on domain (110187.xyz)',
+                'projects.mtEng': 'Movie & TV series tracking web app - Bachelor\'s thesis (B.Eng.)',
+                'projects.mtMsc': 'Movie & TV series tracking web app + AI recommendations - Master\'s thesis (M.Sc.)',
+                'projects.spaceInvaders': 'Web-based Space Invaders game - Course project',
+                'projects.ghPagesSection': 'Web projects on GitHub Pages',
+                'projects.mechaKlub': 'Course project - website optimization (SEO analysis)',
+                'projects.ciphers': 'Team project - interactive demo of historical ciphers',
+                'projects.coauthors': 'Co-authors:',
+                'cv.subtitle': 'Education, experience, and technical skills',
+                'cv.placeholder': 'The CV section is currently under construction.',
+                'links.title': 'Links & Social Media',
+                'links.subtitle': 'Social media profiles, contact info, and other places online',
+                'links.placeholder': 'Social media and external links will appear here soon.'
+            }
+        };
+
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const i18nElements = document.querySelectorAll('[data-i18n]');
+
+        function setLanguage(lang) {
+            const dict = translations[lang] || translations.pl;
+            document.documentElement.lang = lang;
+
+            i18nElements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.textContent = dict[key];
+                }
+            });
+
+            langButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            localStorage.setItem('lang', lang);
+        }
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.dataset.lang);
+            });
+        });
+
+        const savedLang = localStorage.getItem('lang');
+        if (savedLang && (savedLang === 'pl' || savedLang === 'en')) {
+            setLanguage(savedLang);
         }
     </script>
 </body>
