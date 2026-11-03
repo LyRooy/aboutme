@@ -23,7 +23,7 @@ body {
     align-items: flex-start;
     justify-content: center;
     gap: 56px;
-    max-width: 1120px;
+    max-width: 1240px;
     width: 100%;
     margin: 0 auto;
     padding: 40px 32px;
@@ -344,6 +344,19 @@ body {
     margin-bottom: 20px;
 }
 
+/* Two-column layout inside Projects tab */
+.projects-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    align-items: start;
+}
+
+.projects-col {
+    display: flex;
+    flex-direction: column;
+}
+
 /* Project & Profile Cards */
 .card {
     background: rgba(15, 23, 42, 0.55);
@@ -527,6 +540,19 @@ body {
     text-align: center;
     color: #94a3b8;
     font-size: 0.95rem;
+}
+
+.placeholder-box-compact {
+    padding: 24px 18px;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 1020px) {
+    .projects-columns {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
 }
 
 /* GitHub profile links in Projekty */
