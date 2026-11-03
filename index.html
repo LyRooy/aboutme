@@ -12,46 +12,64 @@
     <meta name="theme-color" content="#0b1120">
     <title>LyRooy - Dawid Łyczko</title>
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=7">
+    <link rel="stylesheet" href="style.css?v=8">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
     <div class="layout">
-        <!-- Left Sidebar / Navigation -->
+        <!-- Left Sidebar / Top Mobile Bar -->
         <aside class="sidebar">
             <div class="sidebar-top">
-                <div class="sidebar-profile">
-                    <div class="avatar">
-                        <img src="images/avatar.jpg" alt="LyRooy">
+                <div class="sidebar-header">
+                    <div class="sidebar-profile">
+                        <div class="avatar">
+                            <img src="images/avatar.jpg" alt="LyRooy">
+                        </div>
+                        <div class="sidebar-identity">
+                            <h1 class="sidebar-nick">LyRooy</h1>
+                            <p class="sidebar-realname">Dawid Łyczko</p>
+                        </div>
                     </div>
-                    <div class="sidebar-identity">
-                        <h1 class="sidebar-nick">LyRooy</h1>
-                        <p class="sidebar-realname">Dawid Łyczko</p>
-                    </div>
+
+                    <button class="hamburger-btn" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+                        <i class="ph ph-list" id="menu-icon"></i>
+                    </button>
                 </div>
 
-                <nav class="sidebar-nav">
-                    <button class="nav-item active" data-tab="start">
-                        <span class="nav-item-icon"><i class="ph ph-sparkle"></i></span>
-                        <span class="nav-item-label" data-i18n="nav.start">Start</span>
-                        <i class="ph ph-caret-right nav-item-arrow"></i>
-                    </button>
-                    <button class="nav-item" data-tab="projekty">
-                        <span class="nav-item-icon"><i class="ph ph-code"></i></span>
-                        <span class="nav-item-label" data-i18n="nav.projects">Projekty</span>
-                        <i class="ph ph-caret-right nav-item-arrow"></i>
-                    </button>
-                    <button class="nav-item" data-tab="cv">
-                        <span class="nav-item-icon"><i class="ph ph-read-cv-logo"></i></span>
-                        <span class="nav-item-label" data-i18n="nav.cv">CV</span>
-                        <i class="ph ph-caret-right nav-item-arrow"></i>
-                    </button>
-                    <button class="nav-item" data-tab="linki">
-                        <span class="nav-item-icon"><i class="ph ph-share-network"></i></span>
-                        <span class="nav-item-label" data-i18n="nav.links">Linki</span>
-                        <i class="ph ph-caret-right nav-item-arrow"></i>
-                    </button>
-                </nav>
+                <div class="sidebar-menu" id="sidebar-menu">
+                    <nav class="sidebar-nav">
+                        <button class="nav-item active" data-tab="start">
+                            <span class="nav-item-icon"><i class="ph ph-sparkle"></i></span>
+                            <span class="nav-item-label" data-i18n="nav.start">Start</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </button>
+                        <button class="nav-item" data-tab="projekty">
+                            <span class="nav-item-icon"><i class="ph ph-code"></i></span>
+                            <span class="nav-item-label" data-i18n="nav.projects">Projekty</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </button>
+                        <button class="nav-item" data-tab="cv">
+                            <span class="nav-item-icon"><i class="ph ph-read-cv-logo"></i></span>
+                            <span class="nav-item-label" data-i18n="nav.cv">CV</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </button>
+                        <button class="nav-item" data-tab="linki">
+                            <span class="nav-item-icon"><i class="ph ph-share-network"></i></span>
+                            <span class="nav-item-label" data-i18n="nav.links">Linki</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </button>
+                    </nav>
+
+                    <div class="mobile-menu-footer">
+                        <div class="lang-switch" aria-label="Wybór języka / Language selection">
+                            <i class="ph ph-translate lang-icon"></i>
+                            <button class="lang-btn active" data-lang="pl">PL</button>
+                            <span class="lang-sep">/</span>
+                            <button class="lang-btn" data-lang="en">EN</button>
+                        </div>
+                        <p>&copy; 2026 Dawid Łyczko (LyRooy)</p>
+                    </div>
+                </div>
             </div>
 
             <footer class="sidebar-footer">
@@ -291,6 +309,26 @@
     </div>
 
     <script>
+        // Mobile Hamburger Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuIcon = document.getElementById('menu-icon');
+        const sidebarMenu = document.getElementById('sidebar-menu');
+
+        function closeMobileMenu() {
+            if (!sidebarMenu) return;
+            sidebarMenu.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuIcon.className = 'ph ph-list';
+        }
+
+        if (menuToggle && sidebarMenu) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = sidebarMenu.classList.toggle('open');
+                menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                menuIcon.className = isOpen ? 'ph ph-x' : 'ph ph-list';
+            });
+        }
+
         // Tab navigation
         const navButtons = document.querySelectorAll('.nav-item');
         const tabPanels = document.querySelectorAll('.tab-panel');
@@ -302,6 +340,7 @@
             tabPanels.forEach(panel => {
                 panel.classList.toggle('active', panel.id === 'tab-' + tabId);
             });
+            closeMobileMenu();
         }
 
         navButtons.forEach(btn => {
