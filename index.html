@@ -9,10 +9,10 @@
     <meta property="og:description" content="Dawid Łyczko - Web Development, AI & Homelab.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://110187.xyz">
-    <meta name="theme-color" content="#0f0f1a">
+    <meta name="theme-color" content="#0b1120">
     <title>LyRooy - Dawid Łyczko</title>
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=6">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
@@ -32,20 +32,24 @@
 
                 <nav class="sidebar-nav">
                     <button class="nav-item active" data-tab="start">
-                        <i class="ph ph-sparkle"></i>
-                        <span data-i18n="nav.start">Start</span>
+                        <span class="nav-item-icon"><i class="ph ph-sparkle"></i></span>
+                        <span class="nav-item-label" data-i18n="nav.start">Start</span>
+                        <i class="ph ph-caret-right nav-item-arrow"></i>
                     </button>
                     <button class="nav-item" data-tab="projekty">
-                        <i class="ph ph-code"></i>
-                        <span data-i18n="nav.projects">Projekty</span>
+                        <span class="nav-item-icon"><i class="ph ph-code"></i></span>
+                        <span class="nav-item-label" data-i18n="nav.projects">Projekty</span>
+                        <i class="ph ph-caret-right nav-item-arrow"></i>
                     </button>
                     <button class="nav-item" data-tab="cv">
-                        <i class="ph ph-read-cv-logo"></i>
-                        <span data-i18n="nav.cv">CV</span>
+                        <span class="nav-item-icon"><i class="ph ph-read-cv-logo"></i></span>
+                        <span class="nav-item-label" data-i18n="nav.cv">CV</span>
+                        <i class="ph ph-caret-right nav-item-arrow"></i>
                     </button>
                     <button class="nav-item" data-tab="linki">
-                        <i class="ph ph-share-network"></i>
-                        <span data-i18n="nav.links">Linki</span>
+                        <span class="nav-item-icon"><i class="ph ph-share-network"></i></span>
+                        <span class="nav-item-label" data-i18n="nav.links">Linki</span>
+                        <i class="ph ph-caret-right nav-item-arrow"></i>
                     </button>
                 </nav>
             </div>
@@ -98,10 +102,10 @@
                                 </div>
                                 <div class="card-info">
                                     <span class="card-title">github.com/lyczkod</span>
-                                    <span class="card-desc" data-i18n="start.ghAcadDesc">Konto do celów akademickich i oficjalnych - praca magisterska, replikacje artykułów</span>
+                                    <span class="card-desc" data-i18n="start.ghAcadDesc">Konto do celów akademickich - praca magisterska, replikacje artykułów</span>
                                 </div>
                                 <div class="card-right">
-                                    <span class="badge badge-neutral" data-i18n="badge.acadOfficial">akademicki / oficjalny</span>
+                                    <span class="badge badge-neutral" data-i18n="badge.acadShort">akademicki</span>
                                     <i class="ph ph-arrow-up-right card-arrow"></i>
                                 </div>
                             </a>
@@ -301,18 +305,19 @@
         // Language switching (PL / EN)
         const translations = {
             pl: {
+                'nav.heading': 'Strony',
                 'nav.start': 'Start',
                 'nav.projects': 'Projekty',
                 'nav.cv': 'CV',
                 'nav.links': 'Linki',
+                'start.aboutHeader': 'O mnie',
                 'hero.greeting': 'Cześć, jestem Dawid',
                 'hero.lead': 'Zajmuję się tworzeniem stron oraz aplikacji internetowych. Interesuję się również sztuczną inteligencją (AI) i uczeniem maszynowym - szczególnie wykorzystaniem modeli AI w praktycznych projektach. Prywatnie jestem entuzjastą homelabingu oraz własnej infrastruktury serwerowej (self-hosting).',
                 'start.profilesTitle': 'Podstawowe profile i repozytoria',
                 'start.ghMainDesc': 'Główne konto GitHub - bieżący kod, projekty własne i zespołowe',
-                'start.ghAcadDesc': 'Konto do celów akademickich i oficjalnych - praca magisterska, replikacje artykułów',
+                'start.ghAcadDesc': 'Konto do celów akademickich - praca magisterska, replikacje artykułów',
                 'start.hfDesc': 'Konto Hugging Face - eksploracja i testy modeli AI',
                 'badge.main': 'główny',
-                'badge.acadOfficial': 'akademicki / oficjalny',
                 'badge.acadShort': 'akademicki',
                 'projects.title': 'Zbiór moich projektów',
                 'projects.subtitle': 'Aplikacje internetowe, projekty akademickie oraz realizacje zespołowe',
@@ -332,18 +337,19 @@
                 'links.placeholder': 'Sekcja z odnośnikami społecznościowymi wkrótce się tutaj pojawi.'
             },
             en: {
+                'nav.heading': 'Pages',
                 'nav.start': 'Home',
                 'nav.projects': 'Projects',
                 'nav.cv': 'CV',
                 'nav.links': 'Links',
+                'start.aboutHeader': 'About me',
                 'hero.greeting': "Hi, I'm David",
                 'hero.lead': 'I build websites and web applications. I am also interested in artificial intelligence (AI) and machine learning - especially applying AI models in practical projects. In my free time, I am a homelab and self-hosting enthusiast.',
                 'start.profilesTitle': 'Core profiles & repositories',
                 'start.ghMainDesc': 'Main GitHub account - active code, personal and team projects',
-                'start.ghAcadDesc': 'Academic & official account - Master\'s thesis, paper replications',
+                'start.ghAcadDesc': 'Academic account - Master\'s thesis, paper replications',
                 'start.hfDesc': 'Hugging Face account - exploring and testing AI models',
                 'badge.main': 'main',
-                'badge.acadOfficial': 'academic / official',
                 'badge.acadShort': 'academic',
                 'projects.title': 'My Projects',
                 'projects.subtitle': 'Web applications, academic projects, and team collaborations',
