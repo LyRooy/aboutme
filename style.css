@@ -807,3 +807,236 @@ a.sidebar-profile {
     position: relative;
     z-index: 2;
 }
+
+/* Homelab hardware cards */
+.device-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    align-items: start;
+}
+
+.device-card {
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px 18px 8px;
+}
+
+.device-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.device-title h3 {
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.device-title .card-icon {
+    width: 34px;
+    height: 34px;
+    font-size: 1.15rem;
+}
+
+.spec-list > div {
+    display: grid;
+    grid-template-columns: 104px 1fr;
+    gap: 10px;
+    padding: 7px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    font-size: 0.86rem;
+    line-height: 1.4;
+}
+
+.spec-list dt {
+    color: #64748b;
+    font-size: 0.74rem;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding-top: 2px;
+}
+
+.spec-list dd {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: #e2e8f0;
+    min-width: 0;
+}
+
+.spec-note {
+    color: #94a3b8;
+    font-size: 0.78rem;
+}
+
+.spec-next {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px;
+    color: #60a5fa;
+}
+
+.spec-next em {
+    font-style: normal;
+    font-size: 0.66rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 1px 7px;
+    border-radius: 20px;
+    background: rgba(59, 130, 246, 0.14);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.spec-changing .spec-val {
+    color: #94a3b8;
+    text-decoration: line-through;
+}
+
+@media (max-width: 1100px) {
+    .device-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .spec-list > div {
+        grid-template-columns: 1fr;
+        gap: 2px;
+    }
+}
+
+/* Desktop: pin the sidebar to the top instead of centering it inside tall pages */
+html {
+    overflow-x: hidden;
+}
+
+@media (min-width: 901px) {
+    .layout {
+        align-items: flex-start;
+        padding-top: clamp(20px, 5vh, 56px);
+    }
+
+    .sidebar {
+        align-self: flex-start;
+        top: clamp(20px, 5vh, 56px);
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+
+    .sidebar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .main-content {
+        align-self: flex-start;
+    }
+}
+
+/* Device groups: PC + peripherals | servers + laptop */
+.device-divider {
+    border: none;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.12);
+    margin: 20px 0;
+}
+
+.device-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-width: 0;
+}
+
+/* Services as icon chips */
+.service-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 8px;
+    padding: 4px 0 10px;
+}
+
+.service-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    font-size: 0.84rem;
+    color: #e2e8f0;
+    min-width: 0;
+}
+
+.service-icon {
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(59, 130, 246, 0.14);
+    border: 1px solid rgba(59, 130, 246, 0.28);
+    color: #60a5fa;
+    font-size: 1.05rem;
+}
+
+.service-name {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+.service-name small {
+    color: #94a3b8;
+    font-size: 0.7rem;
+}
+
+.service-icon img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    display: block;
+}
+
+.service-icon {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Bare official logos (no tile), avatar glow no longer clipped */
+.service-icon {
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+
+.service-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+@media (min-width: 901px) {
+    .sidebar {
+        max-height: none;
+        overflow: visible;
+    }
+}
+
+@media (min-width: 901px) and (max-height: 640px) {
+    .sidebar {
+        position: static;
+    }
+}

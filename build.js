@@ -1,4 +1,4 @@
-// Static page generator: node build.js
+﻿// Static page generator: node build.js
 // Produces /pl/** and /en/** pages (real URLs, no hash tabs) from one template.
 const fs = require('fs');
 const path = require('path');
@@ -64,7 +64,33 @@ const T = {
         'homelab.title': 'Specyfikacja i homelab',
         'homelab.subtitle': 'Sprzęt, infrastruktura oraz usługi, które utrzymuję na własnych serwerach',
         'homelab.hardwareSection': 'Specyfikacja sprzętowa',
-        'homelab.hardwarePlaceholder': 'Opis sprzętu (serwery, sieć, pamięć masowa) pojawi się tutaj wkrótce.',
+        'homelab.dev.pc': 'Główny komputer',
+        'homelab.dev.server': 'Serwer główny',
+        'homelab.dev.tiny': 'Serwer drugi',
+        'homelab.dev.laptop': 'Laptop',
+        'homelab.dev.peripherals': 'Peryferia',
+        'homelab.svc.dietpi': 'DietPi · Dell Wyse 5070',
+        'homelab.svc.truenas': 'TrueNAS · Serwer główny',
+        'homelab.codeServerNote': 'dla botów Discord',
+        'homelab.planned': 'Planowana zmiana (grudzień)',
+        'homelab.tvNote': 'czasem używany jako trzeci monitor',
+        'spec.os': 'System',
+        'spec.cpu': 'Procesor',
+        'spec.gpu': 'Karta graficzna',
+        'spec.ram': 'Pamięć RAM',
+        'spec.board': 'Płyta główna',
+        'spec.psu': 'Zasilacz',
+        'spec.case': 'Obudowa',
+        'spec.cooling': 'Chłodzenie',
+        'spec.storage': 'Dysk',
+        'spec.model': 'Model',
+        'spec.monitor': 'Monitor',
+        'spec.tv': 'Telewizor',
+        'spec.speakers': 'Głośniki',
+        'spec.headset': 'Słuchawki',
+        'spec.mic': 'Mikrofon',
+        'spec.keyboard': 'Klawiatura',
+        'spec.mouse': 'Myszka',
         'homelab.workloadSection': 'Usługi i workload',
         'homelab.workloadPlaceholder': 'Lista uruchomionych usług i projektów self-hosted pojawi się tutaj wkrótce.',
         'cv.subtitle': 'Wykształcenie, doświadczenie oraz umiejętności techniczne',
@@ -113,7 +139,33 @@ const T = {
         'homelab.title': 'Specs & homelab',
         'homelab.subtitle': 'Hardware, infrastructure and services I run on my own servers',
         'homelab.hardwareSection': 'Hardware specification',
-        'homelab.hardwarePlaceholder': 'A description of the hardware (servers, network, storage) will appear here soon.',
+        'homelab.dev.pc': 'Main PC',
+        'homelab.dev.server': 'Main server',
+        'homelab.dev.tiny': 'Second server',
+        'homelab.dev.laptop': 'Laptop',
+        'homelab.dev.peripherals': 'Peripherals',
+        'homelab.svc.dietpi': 'DietPi · Dell Wyse 5070',
+        'homelab.svc.truenas': 'TrueNAS · Main server',
+        'homelab.codeServerNote': 'for Discord bots',
+        'homelab.planned': 'Planned change (December)',
+        'homelab.tvNote': 'sometimes used as a third monitor',
+        'spec.os': 'OS',
+        'spec.cpu': 'CPU',
+        'spec.gpu': 'GPU',
+        'spec.ram': 'RAM',
+        'spec.board': 'Motherboard',
+        'spec.psu': 'PSU',
+        'spec.case': 'Case',
+        'spec.cooling': 'Cooling',
+        'spec.storage': 'Storage',
+        'spec.model': 'Model',
+        'spec.monitor': 'Monitor',
+        'spec.tv': 'TV',
+        'spec.speakers': 'Speakers',
+        'spec.headset': 'Headset',
+        'spec.mic': 'Microphone',
+        'spec.keyboard': 'Keyboard',
+        'spec.mouse': 'Mouse',
         'homelab.workloadSection': 'Services & workload',
         'homelab.workloadPlaceholder': 'A list of running services and self-hosted projects will appear here soon.',
         'cv.subtitle': 'Education, experience, and technical skills',
@@ -144,6 +196,126 @@ const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(
 function urlFor(id, lang) {
     const slug = SLUGS[id][lang];
     return '/' + lang + '/' + (slug ? slug + '/' : '');
+}
+
+// ---------- Hardware data (part names are language-independent) ----------
+// row: { k: label key, v: current value(s), next: planned replacement, note: translation key }
+const DEVICES = [
+    {
+        titleKey: 'homelab.dev.pc', icon: 'ph-desktop-tower', cls: 'device-pc',
+        rows: [
+            { k: 'spec.cpu', v: ['AMD Ryzen 7 7800X3D'] },
+            { k: 'spec.gpu', v: ['ASUS Dual GeForce RTX 5070 12 GB'] },
+            { k: 'spec.ram', v: ['Corsair Vengeance DDR5 64 GB 5600 MT/s CL40'] },
+            { k: 'spec.board', v: ['MSI MAG B850 Tomahawk MAX WiFi'] },
+            { k: 'spec.psu', v: ['MSI MAG A850GL PCIE5 II 850 W'] },
+            { k: 'spec.case', v: ['Deepcool CG580 4F V2 (black)'] },
+            { k: 'spec.cooling', v: ['Deepcool LM360 (AIO 360 mm)'] },
+            { k: 'spec.storage', v: ['Kingston KC3000 2 TB NVMe', 'Lexar NQ790 2 TB NVMe', 'Lexar NS100 2 TB SATA'] },
+            { k: 'spec.os', v: ['Windows 11 Pro 26H2'] }
+        ]
+    },
+    {
+        titleKey: 'homelab.dev.peripherals', icon: 'ph-mouse', cls: 'device-peripherals',
+        rows: [
+            { k: 'spec.monitor', v: ['AOC G2460', 'AOC Q27G42XE'] },
+            { k: 'spec.tv', v: ['TCL 43P635 LED 43" 4K Ultra HD'], note: 'homelab.tvNote' },
+            { k: 'spec.speakers', v: ['Edifier R1855DB'] },
+            { k: 'spec.headset', v: ['Razer BlackShark V3 X'] },
+            { k: 'spec.mic', v: ['Endorfy Solum Broadcast'] },
+            { k: 'spec.keyboard', v: ['SPC Gear GK650K Pudding Edition'] },
+            { k: 'spec.mouse', v: ['Razer Basilisk V3'] }
+        ]
+    },
+    {
+        titleKey: 'homelab.dev.server', icon: 'ph-hard-drives', cls: 'device-server',
+        rows: [
+            { k: 'spec.cpu', v: ['AMD Ryzen 5 1600'], next: 'AMD Ryzen 7 5700X' },
+            { k: 'spec.gpu', v: ['ASUS Dual GeForce RTX 5060 Ti 16 GB'] },
+            { k: 'spec.ram', v: ['Kingston Fury Beast DDR4 64 GB 3200 MT/s CL16'] },
+            { k: 'spec.board', v: ['MSI B450M-A PRO MAX II'], next: 'ASUS ROG Strix B550-F Gaming WiFi II' },
+            { k: 'spec.psu', v: ['Corsair CX550 550 W'], next: 'MSI MAG A850GL PCIE5 II 850 W' },
+            { k: 'spec.case', v: ['be quiet! Pure Base 600 Black'] },
+            { k: 'spec.cooling', v: ['Arctic Freezer 36 CO'] },
+            { k: 'spec.storage', v: ['Kingston A2000 500 GB NVMe', '2x Seagate 1 TB HDD'] },
+            { k: 'spec.os', v: ['TrueNAS 25.10.7 "Goldeye"'] }
+        ]
+    },
+    {
+        titleKey: 'homelab.dev.tiny', icon: 'ph-cpu', cls: 'device-tiny',
+        rows: [
+            { k: 'spec.model', v: ['Dell Wyse 5070'] },
+            { k: 'spec.storage', v: ['128 GB M.2 SATA'] },
+            { k: 'spec.os', v: ['Linux DietPi 10.8.2'] }
+        ]
+    },
+    {
+        titleKey: 'homelab.dev.laptop', icon: 'ph-laptop', cls: 'device-laptop',
+        rows: [
+            { k: 'spec.model', v: ['Lenovo ThinkPad T490'] },
+            { k: 'spec.os', v: ['Windows 11 Pro 26H2'] }
+        ]
+    }
+];
+
+// Services as icon chips (official logos in /images/services, from homarr-labs/dashboard-icons and dietpi.com)
+const SERVICES = [
+    {
+        titleKey: 'homelab.svc.dietpi', icon: 'ph-cpu',
+        items: [
+            { name: 'DietPi Dashboard', img: 'dietpi.png' },
+            { name: 'Portainer', img: 'portainer.svg' },
+            { name: 'Homarr', img: 'homarr.svg' },
+            { name: 'Home Assistant', img: 'home-assistant.svg' },
+            { name: 'Nginx Proxy Manager', img: 'nginx-proxy-manager.svg' },
+            { name: 'Vaultwarden', img: 'vaultwarden.svg' },
+            { name: 'Uptime Kuma', img: 'uptime-kuma.svg' },
+            { name: 'Code Server', img: 'code-server.svg', note: 'homelab.codeServerNote' }
+        ]
+    },
+    {
+        titleKey: 'homelab.svc.truenas', icon: 'ph-hard-drives',
+        items: [
+            { name: 'Portainer', img: 'portainer.svg' },
+            { name: 'Crafty Controller', img: 'crafty-controller.svg' },
+            { name: 'Suwayomi', img: 'suwayomi.svg' },
+            { name: 'Odysseus', img: 'odysseus.svg' },
+            { name: 'ComfyUI', img: 'comfyui.svg' },
+            { name: 'Ollama', img: 'ollama.svg' },
+            { name: 'SearXNG', img: 'searxng.svg' },
+            { name: 'Jellyfin', img: 'jellyfin.svg' },
+            { name: 'yt-dlp', img: 'yt-dlp.svg' },
+            { name: 'Syncthing', img: 'syncthing.svg' }
+        ]
+    }
+];
+
+function servicePanel(s, t) {
+    const items = s.items.map(i => `                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/${i.img}" alt="" width="24" height="24"></span><span class="service-name">${esc(i.name)}${i.note ? `<small>${t(i.note)}</small>` : ''}</span></li>\n`).join('');
+    return `                            <div class="device-card service-panel">
+                                <div class="device-title"><span class="card-icon"><i class="ph ${s.icon}"></i></span><h3>${t(s.titleKey)}</h3></div>
+                                <ul class="service-list">
+${items}                                </ul>
+                            </div>
+`;
+}
+
+function deviceCard(d, t) {
+    const rows = d.rows.map(r => {
+        const current = r.v.map(x => `<span class="spec-val">${esc(x)}</span>`).join('');
+        const next = r.next
+            ? `<span class="spec-next"><i class="ph ph-arrow-bend-down-right"></i>${esc(r.next)} <em>${t('homelab.planned')}</em></span>`
+            : '';
+        const note = r.note ? `<span class="spec-note">${t(r.note)}</span>` : '';
+        const cls = r.next ? ' class="spec-changing"' : '';
+        return `                                    <div${cls}><dt>${t(r.k)}</dt><dd>${current}${note}${next}</dd></div>\n`;
+    }).join('');
+    return `                            <div class="device-card ${d.cls}">
+                                <div class="device-title"><span class="card-icon"><i class="ph ${d.icon}"></i></span><h3>${t(d.titleKey)}</h3></div>
+                                <dl class="spec-list">
+${rows}                                </dl>
+                            </div>
+`;
 }
 
 // ---------- Page bodies ----------
@@ -277,7 +449,9 @@ ${ghCard('https://lyrooy.github.io/mecha-klub/', 'Mecha-Klub', 'projects.mechaKl
                 </section>`;
     },
 
-    homelab: t => `
+    homelab: t => {
+        const card = key => deviceCard(DEVICES.find(d => d.titleKey === key), t);
+        return `
                 <section class="tab-panel active">
                     <div class="tab-header">
                         <h2>${t('homelab.title')}</h2>
@@ -286,18 +460,22 @@ ${ghCard('https://lyrooy.github.io/mecha-klub/', 'Mecha-Klub', 'projects.mechaKl
 
                     <div class="section">
                         <div class="section-title">${t('homelab.hardwareSection')}</div>
-                        <div class="placeholder-box placeholder-box-compact">
-                            <p>${t('homelab.hardwarePlaceholder')}</p>
+                        <div class="device-grid">
+${card('homelab.dev.pc')}${card('homelab.dev.peripherals')}                        </div>
+                        <hr class="device-divider">
+                        <div class="device-grid">
+${card('homelab.dev.server')}                            <div class="device-stack">
+${card('homelab.dev.tiny')}${card('homelab.dev.laptop')}                            </div>
                         </div>
                     </div>
 
                     <div class="section">
                         <div class="section-title">${t('homelab.workloadSection')}</div>
-                        <div class="placeholder-box placeholder-box-compact">
-                            <p>${t('homelab.workloadPlaceholder')}</p>
-                        </div>
+                        <div class="device-grid">
+${SERVICES.map(s => servicePanel(s, t)).join('')}                        </div>
                     </div>
-                </section>`,
+                </section>`;
+    },
 
     cv: t => `
                 <section class="tab-panel active">
@@ -353,7 +531,7 @@ function render(pageId, lang) {
     <link rel="canonical" href="${self}">
 ${alternates}${xDefault}
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/style.css?v=10">
+    <link rel="stylesheet" href="/style.css?v=12">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>

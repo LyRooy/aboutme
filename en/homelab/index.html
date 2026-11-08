@@ -16,7 +16,7 @@
     <link rel="alternate" hreflang="pl" href="https://110187.xyz/pl/homelab/">
     <link rel="alternate" hreflang="en" href="https://110187.xyz/en/homelab/">
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/style.css?v=10">
+    <link rel="stylesheet" href="/style.css?v=12">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
@@ -90,15 +90,101 @@
 
                     <div class="section">
                         <div class="section-title">Hardware specification</div>
-                        <div class="placeholder-box placeholder-box-compact">
-                            <p>A description of the hardware (servers, network, storage) will appear here soon.</p>
+                        <div class="device-grid">
+                            <div class="device-card device-pc">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-desktop-tower"></i></span><h3>Main PC</h3></div>
+                                <dl class="spec-list">
+                                    <div><dt>CPU</dt><dd><span class="spec-val">AMD Ryzen 7 7800X3D</span></dd></div>
+                                    <div><dt>GPU</dt><dd><span class="spec-val">ASUS Dual GeForce RTX 5070 12 GB</span></dd></div>
+                                    <div><dt>RAM</dt><dd><span class="spec-val">Corsair Vengeance DDR5 64 GB 5600 MT/s CL40</span></dd></div>
+                                    <div><dt>Motherboard</dt><dd><span class="spec-val">MSI MAG B850 Tomahawk MAX WiFi</span></dd></div>
+                                    <div><dt>PSU</dt><dd><span class="spec-val">MSI MAG A850GL PCIE5 II 850 W</span></dd></div>
+                                    <div><dt>Case</dt><dd><span class="spec-val">Deepcool CG580 4F V2 (black)</span></dd></div>
+                                    <div><dt>Cooling</dt><dd><span class="spec-val">Deepcool LM360 (AIO 360 mm)</span></dd></div>
+                                    <div><dt>Storage</dt><dd><span class="spec-val">Kingston KC3000 2 TB NVMe</span><span class="spec-val">Lexar NQ790 2 TB NVMe</span><span class="spec-val">Lexar NS100 2 TB SATA</span></dd></div>
+                                    <div><dt>OS</dt><dd><span class="spec-val">Windows 11 Pro 26H2</span></dd></div>
+                                </dl>
+                            </div>
+                            <div class="device-card device-peripherals">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-mouse"></i></span><h3>Peripherals</h3></div>
+                                <dl class="spec-list">
+                                    <div><dt>Monitor</dt><dd><span class="spec-val">AOC G2460</span><span class="spec-val">AOC Q27G42XE</span></dd></div>
+                                    <div><dt>TV</dt><dd><span class="spec-val">TCL 43P635 LED 43&quot; 4K Ultra HD</span><span class="spec-note">sometimes used as a third monitor</span></dd></div>
+                                    <div><dt>Speakers</dt><dd><span class="spec-val">Edifier R1855DB</span></dd></div>
+                                    <div><dt>Headset</dt><dd><span class="spec-val">Razer BlackShark V3 X</span></dd></div>
+                                    <div><dt>Microphone</dt><dd><span class="spec-val">Endorfy Solum Broadcast</span></dd></div>
+                                    <div><dt>Keyboard</dt><dd><span class="spec-val">SPC Gear GK650K Pudding Edition</span></dd></div>
+                                    <div><dt>Mouse</dt><dd><span class="spec-val">Razer Basilisk V3</span></dd></div>
+                                </dl>
+                            </div>
+                        </div>
+                        <hr class="device-divider">
+                        <div class="device-grid">
+                            <div class="device-card device-server">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-hard-drives"></i></span><h3>Main server</h3></div>
+                                <dl class="spec-list">
+                                    <div class="spec-changing"><dt>CPU</dt><dd><span class="spec-val">AMD Ryzen 5 1600</span><span class="spec-next"><i class="ph ph-arrow-bend-down-right"></i>AMD Ryzen 7 5700X <em>Planned change (December)</em></span></dd></div>
+                                    <div><dt>GPU</dt><dd><span class="spec-val">ASUS Dual GeForce RTX 5060 Ti 16 GB</span></dd></div>
+                                    <div><dt>RAM</dt><dd><span class="spec-val">Kingston Fury Beast DDR4 64 GB 3200 MT/s CL16</span></dd></div>
+                                    <div class="spec-changing"><dt>Motherboard</dt><dd><span class="spec-val">MSI B450M-A PRO MAX II</span><span class="spec-next"><i class="ph ph-arrow-bend-down-right"></i>ASUS ROG Strix B550-F Gaming WiFi II <em>Planned change (December)</em></span></dd></div>
+                                    <div class="spec-changing"><dt>PSU</dt><dd><span class="spec-val">Corsair CX550 550 W</span><span class="spec-next"><i class="ph ph-arrow-bend-down-right"></i>MSI MAG A850GL PCIE5 II 850 W <em>Planned change (December)</em></span></dd></div>
+                                    <div><dt>Case</dt><dd><span class="spec-val">be quiet! Pure Base 600 Black</span></dd></div>
+                                    <div><dt>Cooling</dt><dd><span class="spec-val">Arctic Freezer 36 CO</span></dd></div>
+                                    <div><dt>Storage</dt><dd><span class="spec-val">Kingston A2000 500 GB NVMe</span><span class="spec-val">2x Seagate 1 TB HDD</span></dd></div>
+                                    <div><dt>OS</dt><dd><span class="spec-val">TrueNAS 25.10.7 &quot;Goldeye&quot;</span></dd></div>
+                                </dl>
+                            </div>
+                            <div class="device-stack">
+                            <div class="device-card device-tiny">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-cpu"></i></span><h3>Second server</h3></div>
+                                <dl class="spec-list">
+                                    <div><dt>Model</dt><dd><span class="spec-val">Dell Wyse 5070</span></dd></div>
+                                    <div><dt>Storage</dt><dd><span class="spec-val">128 GB M.2 SATA</span></dd></div>
+                                    <div><dt>OS</dt><dd><span class="spec-val">Linux DietPi 10.8.2</span></dd></div>
+                                </dl>
+                            </div>
+                            <div class="device-card device-laptop">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-laptop"></i></span><h3>Laptop</h3></div>
+                                <dl class="spec-list">
+                                    <div><dt>Model</dt><dd><span class="spec-val">Lenovo ThinkPad T490</span></dd></div>
+                                    <div><dt>OS</dt><dd><span class="spec-val">Windows 11 Pro 26H2</span></dd></div>
+                                </dl>
+                            </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="section">
                         <div class="section-title">Services &amp; workload</div>
-                        <div class="placeholder-box placeholder-box-compact">
-                            <p>A list of running services and self-hosted projects will appear here soon.</p>
+                        <div class="device-grid">
+                            <div class="device-card service-panel">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-cpu"></i></span><h3>DietPi · Dell Wyse 5070</h3></div>
+                                <ul class="service-list">
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/dietpi.png" alt="" width="24" height="24"></span><span class="service-name">DietPi Dashboard</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/portainer.svg" alt="" width="24" height="24"></span><span class="service-name">Portainer</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/homarr.svg" alt="" width="24" height="24"></span><span class="service-name">Homarr</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/home-assistant.svg" alt="" width="24" height="24"></span><span class="service-name">Home Assistant</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/nginx-proxy-manager.svg" alt="" width="24" height="24"></span><span class="service-name">Nginx Proxy Manager</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/vaultwarden.svg" alt="" width="24" height="24"></span><span class="service-name">Vaultwarden</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/uptime-kuma.svg" alt="" width="24" height="24"></span><span class="service-name">Uptime Kuma</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/code-server.svg" alt="" width="24" height="24"></span><span class="service-name">Code Server<small>for Discord bots</small></span></li>
+                                </ul>
+                            </div>
+                            <div class="device-card service-panel">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-hard-drives"></i></span><h3>TrueNAS · Main server</h3></div>
+                                <ul class="service-list">
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/portainer.svg" alt="" width="24" height="24"></span><span class="service-name">Portainer</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/crafty-controller.svg" alt="" width="24" height="24"></span><span class="service-name">Crafty Controller</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/suwayomi.svg" alt="" width="24" height="24"></span><span class="service-name">Suwayomi</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/odysseus.svg" alt="" width="24" height="24"></span><span class="service-name">Odysseus</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/comfyui.svg" alt="" width="24" height="24"></span><span class="service-name">ComfyUI</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/ollama.svg" alt="" width="24" height="24"></span><span class="service-name">Ollama</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/searxng.svg" alt="" width="24" height="24"></span><span class="service-name">SearXNG</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/jellyfin.svg" alt="" width="24" height="24"></span><span class="service-name">Jellyfin</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/yt-dlp.svg" alt="" width="24" height="24"></span><span class="service-name">yt-dlps</span></li>
+                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/syncthing.svg" alt="" width="24" height="24"></span><span class="service-name">Syncthing</span></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </section>
