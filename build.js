@@ -1,4 +1,4 @@
-﻿// Static page generator: node build.js
+// Static page generator: node build.js
 // Produces /pl/** and /en/** pages (real URLs, no hash tabs) from one template.
 const fs = require('fs');
 const path = require('path');
@@ -263,35 +263,35 @@ const SERVICES = [
     {
         titleKey: 'homelab.svc.dietpi', icon: 'ph-cpu',
         items: [
-            { name: 'DietPi Dashboard', img: 'dietpi.png' },
-            { name: 'Portainer', img: 'portainer.svg' },
-            { name: 'Homarr', img: 'homarr.svg' },
-            { name: 'Home Assistant', img: 'home-assistant.svg' },
-            { name: 'Nginx Proxy Manager', img: 'nginx-proxy-manager.svg' },
-            { name: 'Vaultwarden', img: 'vaultwarden.svg' },
-            { name: 'Uptime Kuma', img: 'uptime-kuma.svg' },
-            { name: 'Code Server', img: 'code-server.svg', note: 'homelab.codeServerNote' }
+            { name: 'DietPi Dashboard', img: 'dietpi.png', url: 'https://dietpi.com/docs/software/system_stats/#dietpi-dashboard' },
+            { name: 'Portainer', img: 'portainer.svg', url: 'https://www.portainer.io/' },
+            { name: 'Homarr', img: 'homarr.svg', url: 'https://homarr.dev/' },
+            { name: 'Home Assistant', img: 'home-assistant.svg', url: 'https://www.home-assistant.io/' },
+            { name: 'Nginx Proxy Manager', img: 'nginx-proxy-manager.svg', url: 'https://nginxproxymanager.com/' },
+            { name: 'Vaultwarden', img: 'vaultwarden.svg', url: 'https://github.com/dani-garcia/vaultwarden' },
+            { name: 'Uptime Kuma', img: 'uptime-kuma.svg', url: 'https://uptime.kuma.pet/' },
+            { name: 'Code Server', img: 'code-server.svg', url: 'https://coder.com/docs/code-server', note: 'homelab.codeServerNote' }
         ]
     },
     {
         titleKey: 'homelab.svc.truenas', icon: 'ph-hard-drives',
         items: [
-            { name: 'Portainer', img: 'portainer.svg' },
-            { name: 'Crafty Controller', img: 'crafty-controller.svg' },
-            { name: 'Suwayomi', img: 'suwayomi.svg' },
-            { name: 'Odysseus', img: 'odysseus.svg' },
-            { name: 'ComfyUI', img: 'comfyui.svg' },
-            { name: 'Ollama', img: 'ollama.svg' },
-            { name: 'SearXNG', img: 'searxng.svg' },
-            { name: 'Jellyfin', img: 'jellyfin.svg' },
-            { name: 'yt-dlp', img: 'yt-dlp.svg' },
-            { name: 'Syncthing', img: 'syncthing.svg' }
+            { name: 'Portainer', img: 'portainer.svg', url: 'https://www.portainer.io/' },
+            { name: 'Crafty Controller', img: 'crafty-controller.svg', url: 'https://craftycontrol.com/' },
+            { name: 'Suwayomi', img: 'suwayomi.svg', url: 'https://github.com/Suwayomi/Suwayomi-Server' },
+            { name: 'Odysseus', img: 'odysseus.svg', url: 'https://odysseus-dev.github.io/odysseus/' },
+            { name: 'ComfyUI', img: 'comfyui.svg', url: 'https://www.comfy.org/' },
+            { name: 'Ollama', img: 'ollama.svg', url: 'https://ollama.com/' },
+            { name: 'SearXNG', img: 'searxng.svg', url: 'https://docs.searxng.org/' },
+            { name: 'Jellyfin', img: 'jellyfin.svg', url: 'https://jellyfin.org/' },
+            { name: 'ytdl-sub', img: 'yt-dlp.svg', url: 'https://github.com/jmbannon/ytdl-sub' },
+            { name: 'Syncthing', img: 'syncthing.svg', url: 'https://syncthing.net/' }
         ]
     }
 ];
 
 function servicePanel(s, t) {
-    const items = s.items.map(i => `                                    <li class="service-chip"><span class="service-icon"><img src="/images/services/${i.img}" alt="" width="24" height="24"></span><span class="service-name">${esc(i.name)}${i.note ? `<small>${t(i.note)}</small>` : ''}</span></li>\n`).join('');
+    const items = s.items.map(i => `                                    <li><a class="service-chip" href="${i.url}" target="_blank" rel="noopener"><span class="service-icon"><img src="/images/services/${i.img}" alt="" width="24" height="24"></span><span class="service-name">${esc(i.name)}${i.note ? `<small>${t(i.note)}</small>` : ''}</span></a></li>\n`).join('');
     return `                            <div class="device-card service-panel">
                                 <div class="device-title"><span class="card-icon"><i class="ph ${s.icon}"></i></span><h3>${t(s.titleKey)}</h3></div>
                                 <ul class="service-list">
@@ -531,7 +531,7 @@ function render(pageId, lang) {
     <link rel="canonical" href="${self}">
 ${alternates}${xDefault}
     <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/style.css?v=12">
+    <link rel="stylesheet" href="/style.css?v=13">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>

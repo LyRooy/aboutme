@@ -967,6 +967,7 @@ html {
     display: flex;
     align-items: center;
     gap: 10px;
+    height: 100%;
     padding: 8px 10px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.07);
@@ -974,6 +975,15 @@ html {
     font-size: 0.84rem;
     color: #e2e8f0;
     min-width: 0;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+}
+
+.service-chip:hover {
+    background: rgba(30, 41, 59, 0.75);
+    border-color: rgba(59, 130, 246, 0.4);
+    color: #ffffff;
+    transform: translateY(-2px);
 }
 
 .service-icon {
