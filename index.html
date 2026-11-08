@@ -3,42 +3,682 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex">
-    <title>LyRooy - Dawid Łyczko</title>
-    <link rel="canonical" href="https://110187.xyz/pl/">
-    <link rel="alternate" hreflang="pl" href="https://110187.xyz/pl/">
-    <link rel="alternate" hreflang="en" href="https://110187.xyz/en/">
-    <link rel="alternate" hreflang="x-default" href="https://110187.xyz/">
-    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+    <meta name="author" content="Dawid Łyczko">
+    <meta name="description" content="Dawid Łyczko (LyRooy) - tworzenie stron i aplikacji internetowych, sztuczna inteligencja (AI) oraz homelab.">
+    <meta property="og:title" content="LyRooy - Dawid Łyczko">
+    <meta property="og:description" content="Dawid Łyczko (LyRooy) - tworzenie stron i aplikacji internetowych, sztuczna inteligencja (AI) oraz homelab.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://110187.xyz/">
     <meta name="theme-color" content="#0b1120">
-    <style>body{background:#080c14;color:#e2e8f0;font-family:'Segoe UI',Arial,sans-serif;padding:2rem}a{color:#60a5fa}</style>
-    <script>
-        // Pick the language from the saved choice or the browser's preferred languages.
-        (function () {
-            var supported = ['pl', 'en'];
-            var lang = null;
-            try {
-                var saved = localStorage.getItem('lang');
-                if (supported.indexOf(saved) !== -1) lang = saved;
-            } catch (e) { /* ignore */ }
-            if (!lang) {
-                var prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
-                for (var i = 0; i < prefs.length && !lang; i++) {
-                    var code = String(prefs[i]).slice(0, 2).toLowerCase();
-                    if (supported.indexOf(code) !== -1) lang = code;
-                }
-            }
-            lang = lang || 'en';
-            // Old hash-based links (/#cv) map to real pages
-            var pages = { pl: { projekty: 'projekty/', cv: 'cv/', linki: 'linki/' }, en: { projekty: 'projects/', cv: 'cv/', linki: 'links/' } };
-            var sub = pages[lang][window.location.hash.replace('#', '')] || '';
-            window.location.replace('/' + lang + '/' + sub);
-        })();
-    </script>
+    <title>LyRooy - Dawid Łyczko</title>
+    <link rel="canonical" href="https://110187.xyz/">
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="style.css?v=14">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
-    <noscript>
-        <p><a href="/pl/">Polski</a> | <a href="/en/">English</a></p>
-    </noscript>
+    <div class="layout" id="layout">
+        <!-- Left Sidebar / Top Mobile Bar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <div class="sidebar-profile" id="sidebar-profile" role="button" tabindex="0">
+                        <div class="avatar">
+                            <img src="images/avatar.jpg" alt="LyRooy">
+                        </div>
+                        <div class="sidebar-identity">
+                            <h1 class="sidebar-nick">LyRooy</h1>
+                            <p class="sidebar-realname">Dawid Łyczko</p>
+                        </div>
+                    </div>
+
+                    <button class="hamburger-btn" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+                        <i class="ph ph-list" id="menu-icon"></i>
+                    </button>
+                </div>
+
+                <div class="sidebar-menu" id="sidebar-menu">
+                    <nav class="sidebar-nav">
+                        <button class="nav-item active" data-tab="start">
+                            <span class="nav-item-icon"><i class="ph ph-sparkle"></i></span>
+                            <span class="nav-item-label" data-i18n="nav.start">Start</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </button>
+                        <button class="nav-item" data-tab="projekty">
+                            <span class="nav-item-icon"><i class="ph ph-code"></i></span>
+                            <span class="nav-item-label" data-i18n="nav.projects">Projekty</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </button>
+                        <button class="nav-item" data-tab="homelab">
+                            <span class="nav-item-icon"><i class="ph ph-hard-drives"></i></span>
+                            <span class="nav-item-label" data-i18n="nav.homelab">Specyfikacja</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </button>
+                        <button class="nav-item" data-tab="cv">
+                            <span class="nav-item-icon"><i class="ph ph-read-cv-logo"></i></span>
+                            <span class="nav-item-label" data-i18n="nav.cv">CV</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </button>
+                        <button class="nav-item" data-tab="linki">
+                            <span class="nav-item-icon"><i class="ph ph-share-network"></i></span>
+                            <span class="nav-item-label" data-i18n="nav.links">Linki</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </button>
+                    </nav>
+
+                    <div class="mobile-menu-footer">
+                        <div class="lang-switch" aria-label="Wybór języka / Language selection">
+                            <i class="ph ph-translate lang-icon"></i>
+                            <button class="lang-btn active" data-lang="pl">PL</button>
+                            <span class="lang-sep">/</span>
+                            <button class="lang-btn" data-lang="en">EN</button>
+                        </div>
+                        <p>&copy; 2026 Dawid Łyczko (LyRooy)</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="sidebar-footer">
+                <div class="lang-switch" aria-label="Wybór języka / Language selection">
+                    <i class="ph ph-translate lang-icon"></i>
+                    <button class="lang-btn active" data-lang="pl">PL</button>
+                    <span class="lang-sep">/</span>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <p>&copy; 2026 Dawid Łyczko (LyRooy)</p>
+            </footer>
+        </aside>
+
+        <!-- Right Main Content -->
+        <main class="main-content" id="main-content">
+            <div class="content-wrapper">
+
+                <!-- TAB: START -->
+                <section id="tab-start" class="tab-panel active">
+                    <div class="hero-box">
+                        <div class="hero-badge">Web Development &bull; AI &bull; Homelab</div>
+                        <h2><span data-i18n="hero.greeting">Cześć, jestem Dawid</span> <span class="hero-subname">(LyRooy)</span></h2>
+                        <p class="hero-lead" data-i18n="hero.lead">Zajmuję się tworzeniem stron oraz aplikacji internetowych. Interesuję się również sztuczną inteligencją (AI) i uczeniem maszynowym - szczególnie wykorzystaniem modeli AI w praktycznych projektach. Prywatnie jestem entuzjastą homelabingu oraz własnej infrastruktury serwerowej (self-hosting).</p>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title" data-i18n="start.profilesTitle">Podstawowe profile i repozytoria</div>
+                        <div class="quick-links-grid">
+                            <a class="card" href="https://github.com/lyrooy" target="_blank" rel="noopener">
+                                <div class="card-icon"><i class="ph ph-github-logo"></i></div>
+                                <div class="card-info">
+                                    <span class="card-title">github.com/lyrooy</span>
+                                    <span class="card-desc" data-i18n="start.ghMainDesc">Główne konto GitHub - bieżący kod, projekty własne i zespołowe</span>
+                                </div>
+                                <div class="card-right">
+                                    <span class="badge badge-primary" data-i18n="badge.main">główny</span>
+                                    <i class="ph ph-arrow-up-right card-arrow"></i>
+                                </div>
+                            </a>
+
+                            <a class="card" href="https://github.com/lyczkod" target="_blank" rel="noopener">
+                                <div class="card-icon"><i class="ph ph-graduation-cap"></i></div>
+                                <div class="card-info">
+                                    <span class="card-title">github.com/lyczkod</span>
+                                    <span class="card-desc" data-i18n="start.ghAcadDesc">Konto do celów akademickich - praca magisterska, replikacje artykułów</span>
+                                </div>
+                                <div class="card-right">
+                                    <span class="badge badge-neutral" data-i18n="badge.acadShort">akademicki</span>
+                                    <i class="ph ph-arrow-up-right card-arrow"></i>
+                                </div>
+                            </a>
+
+                            <a class="card" href="https://huggingface.co/LyRooy" target="_blank" rel="noopener">
+                                <div class="card-icon hf-icon"><i class="ph ph-brain"></i></div>
+                                <div class="card-info">
+                                    <span class="card-title">huggingface.co/LyRooy</span>
+                                    <span class="card-desc" data-i18n="start.hfDesc">Konto Hugging Face - eksploracja i testy modeli AI</span>
+                                </div>
+                                <div class="card-right">
+                                    <span class="badge badge-hf">Hugging Face</span>
+                                    <i class="ph ph-arrow-up-right card-arrow"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB: PROJEKTY -->
+                <section id="tab-projekty" class="tab-panel">
+                    <div class="tab-header">
+                        <h2 data-i18n="projects.title">Zbiór moich projektów</h2>
+                        <p data-i18n="projects.subtitle">Aplikacje internetowe, projekty akademickie oraz realizacje zespołowe</p>
+                    </div>
+
+                    <div class="projects-columns">
+                        <div class="projects-col">
+                            <div class="section">
+                                <div class="section-title" data-i18n="projects.domainSection">Projekty webowe na domenie (110187.xyz)</div>
+
+                                <a class="card" href="https://movie-tracker.110187.xyz" target="_blank" rel="noopener">
+                                    <div class="card-info">
+                                        <span class="card-title">Movie Tracker</span>
+                                        <span class="card-desc" data-i18n="projects.mtEng">Aplikacja do zarządzania listą filmów i seriali - praca inżynierska</span>
+                                    </div>
+                                    <div class="card-right">
+                                        <span class="badge badge-domain">110187.xyz</span>
+                                        <i class="ph ph-arrow-up-right card-arrow"></i>
+                                    </div>
+                                </a>
+
+                                <a class="card" href="https://movie-tracker-mstr.110187.xyz" target="_blank" rel="noopener">
+                                    <div class="card-info">
+                                        <span class="card-title">Movie Tracker</span>
+                                        <span class="card-desc" data-i18n="projects.mtMsc">Aplikacja do zarządzania listą filmów i seriali + rekomendacje - praca magisterska</span>
+                                    </div>
+                                    <div class="card-right">
+                                        <span class="badge badge-domain">110187.xyz</span>
+                                        <i class="ph ph-arrow-up-right card-arrow"></i>
+                                    </div>
+                                </a>
+
+                                <a class="card" href="https://arcade.110187.xyz" target="_blank" rel="noopener">
+                                    <div class="card-info">
+                                        <span class="card-title">Space Invaders</span>
+                                        <span class="card-desc" data-i18n="projects.spaceInvaders">Gra Space Invaders w wersji webowej - Projekt zaliczeniowy</span>
+                                    </div>
+                                    <div class="card-right">
+                                        <span class="badge badge-domain">110187.xyz</span>
+                                        <i class="ph ph-arrow-up-right card-arrow"></i>
+                                    </div>
+                                </a>
+
+                                <a class="card" href="https://academic-calendar.110187.xyz/" target="_blank" rel="noopener">
+                                    <div class="card-info">
+                                        <span class="card-title">Academic Calendar</span>
+                                        <span class="card-desc" data-i18n="projects.acadCalendar">Aplikacja kalendarza akademickiego</span>
+                                    </div>
+                                    <div class="card-right">
+                                        <span class="badge badge-domain">110187.xyz</span>
+                                        <i class="ph ph-arrow-up-right card-arrow"></i>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="projects-col">
+                            <div class="section">
+                                <div class="section-title" data-i18n="projects.ghPagesSection">Projekty webowe na GitHub Pages</div>
+
+                                <div class="card card-complex">
+                                    <a href="https://lyrooy.github.io/mecha-klub/" target="_blank" rel="noopener" class="card-overlay-link" aria-label="Mecha-Klub"></a>
+                                    <div class="card-top-row">
+                                        <div class="card-info">
+                                            <span class="card-title">Mecha-Klub</span>
+                                            <span class="card-desc" data-i18n="projects.mechaKlub">Projekt zaliczeniowy - optymalizacja stron (analiza SEO)</span>
+                                        </div>
+                                        <div class="card-right card-raised">
+                                            <span class="badge badge-ghpages">GitHub Pages</span>
+                                            <i class="ph ph-arrow-up-right card-arrow"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-authors card-raised">
+                                        <span data-i18n="projects.coauthors">Współ-autorzy:</span>
+                                        <a class="author-link" href="https://github.com/Glamie" target="_blank" rel="noopener">
+                                            <i class="ph-fill ph-github-logo"></i>
+                                            Glamie
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="card card-complex">
+                                    <a href="https://lyrooy.github.io/historical-ciphers-demo/" target="_blank" rel="noopener" class="card-overlay-link" aria-label="Historical Ciphers Demo"></a>
+                                    <div class="card-top-row">
+                                        <div class="card-info">
+                                            <span class="card-title">Historical Ciphers Demo</span>
+                                            <span class="card-desc" data-i18n="projects.ciphers">Projekt zespołowy - interaktywne demo szyfrów historycznych</span>
+                                        </div>
+                                        <div class="card-right card-raised">
+                                            <span class="badge badge-ghpages">GitHub Pages</span>
+                                            <i class="ph ph-arrow-up-right card-arrow"></i>
+                                        </div>
+                                    </div>
+                                    <div class="card-authors card-raised">
+                                        <span data-i18n="projects.coauthors">Współ-autorzy:</span>
+                                        <a class="author-link" href="https://github.com/Glamie" target="_blank" rel="noopener">
+                                            <i class="ph-fill ph-github-logo"></i>
+                                            Glamie
+                                        </a>
+                                        <a class="author-link" href="https://github.com/xToMsIx" target="_blank" rel="noopener">
+                                            <i class="ph-fill ph-github-logo"></i>
+                                            xToMsIx
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="section">
+                                <div class="section-title" data-i18n="projects.otherSection">Inne projekty</div>
+                                <div class="placeholder-box placeholder-box-compact">
+                                    <p data-i18n="projects.otherPlaceholder">Miejsce na kolejne realizacje i projekty niewebowe.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="github-profiles">
+                        <a class="github-profile" href="https://github.com/lyrooy" target="_blank" rel="noopener">
+                            <i class="ph-fill ph-github-logo"></i>
+                            github.com/lyrooy
+                            <span class="github-profile-tag" data-i18n="badge.main">główny</span>
+                        </a>
+                        <a class="github-profile" href="https://github.com/lyczkod" target="_blank" rel="noopener">
+                            <i class="ph-fill ph-github-logo"></i>
+                            github.com/lyczkod
+                            <span class="github-profile-tag" data-i18n="badge.acadShort">akademicki</span>
+                        </a>
+                    </div>
+                </section>
+
+                <!-- TAB: SPECYFIKACJA / HOMELAB -->
+                <section id="tab-homelab" class="tab-panel">
+                    <div class="tab-header">
+                        <h2 data-i18n="homelab.title">Specyfikacja i homelab</h2>
+                        <p data-i18n="homelab.subtitle">Sprzęt, infrastruktura oraz usługi, które utrzymuję na własnych serwerach</p>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title" data-i18n="homelab.hardwareSection">Specyfikacja sprzętowa</div>
+                        <div class="device-grid">
+                            <div class="device-card device-pc">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-desktop-tower"></i></span><h3 data-i18n="homelab.dev.pc">Główny komputer</h3></div>
+                                <dl class="spec-list">
+                                    <div><dt data-i18n="spec.cpu">Procesor</dt><dd><span class="spec-val">AMD Ryzen 7 7800X3D</span></dd></div>
+                                    <div><dt data-i18n="spec.gpu">Karta graficzna</dt><dd><span class="spec-val">ASUS Dual GeForce RTX 5070 12 GB</span></dd></div>
+                                    <div><dt data-i18n="spec.ram">Pamięć RAM</dt><dd><span class="spec-val">Corsair Vengeance DDR5 64 GB 5600 MT/s CL40</span></dd></div>
+                                    <div><dt data-i18n="spec.board">Płyta główna</dt><dd><span class="spec-val">MSI MAG B850 Tomahawk MAX WiFi</span></dd></div>
+                                    <div><dt data-i18n="spec.psu">Zasilacz</dt><dd><span class="spec-val">MSI MAG A850GL PCIE5 II 850 W</span></dd></div>
+                                    <div><dt data-i18n="spec.case">Obudowa</dt><dd><span class="spec-val">Deepcool CG580 4F V2 (black)</span></dd></div>
+                                    <div><dt data-i18n="spec.cooling">Chłodzenie</dt><dd><span class="spec-val">Deepcool LM360 (AIO 360 mm)</span></dd></div>
+                                    <div><dt data-i18n="spec.storage">Dysk</dt><dd><span class="spec-val">Kingston KC3000 2 TB NVMe</span><span class="spec-val">Lexar NQ790 2 TB NVMe</span><span class="spec-val">Lexar NS100 2 TB SATA</span></dd></div>
+                                    <div><dt data-i18n="spec.os">System</dt><dd><span class="spec-val">Windows 11 Pro 26H2</span></dd></div>
+                                </dl>
+                            </div>
+                            <div class="device-card device-peripherals">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-mouse"></i></span><h3 data-i18n="homelab.dev.peripherals">Peryferia</h3></div>
+                                <dl class="spec-list">
+                                    <div><dt data-i18n="spec.monitor">Monitor</dt><dd><span class="spec-val">AOC G2460</span><span class="spec-val">AOC Q27G42XE</span></dd></div>
+                                    <div><dt data-i18n="spec.tv">Telewizor</dt><dd><span class="spec-val">TCL 43P635 LED 43&quot; 4K Ultra HD</span><span class="spec-note" data-i18n="homelab.tvNote">czasem używany jako trzeci monitor</span></dd></div>
+                                    <div><dt data-i18n="spec.speakers">Głośniki</dt><dd><span class="spec-val">Edifier R1855DB</span></dd></div>
+                                    <div><dt data-i18n="spec.headset">Słuchawki</dt><dd><span class="spec-val">Razer BlackShark V3 X</span></dd></div>
+                                    <div><dt data-i18n="spec.mic">Mikrofon</dt><dd><span class="spec-val">Endorfy Solum Broadcast</span></dd></div>
+                                    <div><dt data-i18n="spec.keyboard">Klawiatura</dt><dd><span class="spec-val">SPC Gear GK650K Pudding Edition</span></dd></div>
+                                    <div><dt data-i18n="spec.mouse">Myszka</dt><dd><span class="spec-val">Razer Basilisk V3</span></dd></div>
+                                </dl>
+                            </div>
+                        </div>
+                        <hr class="device-divider">
+                        <div class="device-grid">
+                            <div class="device-card device-server">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-hard-drives"></i></span><h3 data-i18n="homelab.dev.server">Serwer główny</h3></div>
+                                <dl class="spec-list">
+                                    <div class="spec-changing"><dt data-i18n="spec.cpu">Procesor</dt><dd><span class="spec-val">AMD Ryzen 5 1600</span><span class="spec-next"><i class="ph ph-arrow-bend-down-right"></i>AMD Ryzen 7 5700X <em data-i18n="homelab.planned">Planowana zmiana (grudzień)</em></span></dd></div>
+                                    <div><dt data-i18n="spec.gpu">Karta graficzna</dt><dd><span class="spec-val">ASUS Dual GeForce RTX 5060 Ti 16 GB</span></dd></div>
+                                    <div><dt data-i18n="spec.ram">Pamięć RAM</dt><dd><span class="spec-val">Kingston Fury Beast DDR4 64 GB 3200 MT/s CL16</span></dd></div>
+                                    <div class="spec-changing"><dt data-i18n="spec.board">Płyta główna</dt><dd><span class="spec-val">MSI B450M-A PRO MAX II</span><span class="spec-next"><i class="ph ph-arrow-bend-down-right"></i>ASUS ROG Strix B550-F Gaming WiFi II <em data-i18n="homelab.planned">Planowana zmiana (grudzień)</em></span></dd></div>
+                                    <div class="spec-changing"><dt data-i18n="spec.psu">Zasilacz</dt><dd><span class="spec-val">Corsair CX550 550 W</span><span class="spec-next"><i class="ph ph-arrow-bend-down-right"></i>MSI MAG A850GL PCIE5 II 850 W <em data-i18n="homelab.planned">Planowana zmiana (grudzień)</em></span></dd></div>
+                                    <div><dt data-i18n="spec.case">Obudowa</dt><dd><span class="spec-val">be quiet! Pure Base 600 Black</span></dd></div>
+                                    <div><dt data-i18n="spec.cooling">Chłodzenie</dt><dd><span class="spec-val">Arctic Freezer 36 CO</span></dd></div>
+                                    <div><dt data-i18n="spec.storage">Dysk</dt><dd><span class="spec-val">Kingston A2000 500 GB NVMe</span><span class="spec-val">2x Seagate 1 TB HDD</span></dd></div>
+                                    <div><dt data-i18n="spec.os">System</dt><dd><span class="spec-val">TrueNAS 25.10.7 &quot;Goldeye&quot;</span></dd></div>
+                                </dl>
+                            </div>
+                            <div class="device-stack">
+                                <div class="device-card device-tiny">
+                                    <div class="device-title"><span class="card-icon"><i class="ph ph-cpu"></i></span><h3 data-i18n="homelab.dev.tiny">Serwer drugi</h3></div>
+                                    <dl class="spec-list">
+                                        <div><dt data-i18n="spec.model">Model</dt><dd><span class="spec-val">Dell Wyse 5070</span></dd></div>
+                                        <div><dt data-i18n="spec.storage">Dysk</dt><dd><span class="spec-val">128 GB M.2 SATA</span></dd></div>
+                                        <div><dt data-i18n="spec.os">System</dt><dd><span class="spec-val">Linux DietPi 10.8.2</span></dd></div>
+                                    </dl>
+                                </div>
+                                <div class="device-card device-laptop">
+                                    <div class="device-title"><span class="card-icon"><i class="ph ph-laptop"></i></span><h3 data-i18n="homelab.dev.laptop">Laptop</h3></div>
+                                    <dl class="spec-list">
+                                        <div><dt data-i18n="spec.model">Model</dt><dd><span class="spec-val">Lenovo ThinkPad T490</span></dd></div>
+                                        <div><dt data-i18n="spec.os">System</dt><dd><span class="spec-val">Windows 11 Pro 26H2</span></dd></div>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title" data-i18n="homelab.workloadSection">Usługi i workload</div>
+                        <div class="device-grid">
+                            <div class="device-card service-panel">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-cpu"></i></span><h3 data-i18n="homelab.svc.dietpi">DietPi · Dell Wyse 5070</h3></div>
+                                <ul class="service-list">
+                                    <li><a class="service-chip" href="https://dietpi.com/docs/software/system_stats/#dietpi-dashboard" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/dietpi.png" alt="" width="24" height="24"></span><span class="service-name">DietPi Dashboard</span></a></li>
+                                    <li><a class="service-chip" href="https://www.portainer.io/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/portainer.svg" alt="" width="24" height="24"></span><span class="service-name">Portainer</span></a></li>
+                                    <li><a class="service-chip" href="https://homarr.dev/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/homarr.svg" alt="" width="24" height="24"></span><span class="service-name">Homarr</span></a></li>
+                                    <li><a class="service-chip" href="https://www.home-assistant.io/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/home-assistant.svg" alt="" width="24" height="24"></span><span class="service-name">Home Assistant</span></a></li>
+                                    <li><a class="service-chip" href="https://nginxproxymanager.com/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/nginx-proxy-manager.svg" alt="" width="24" height="24"></span><span class="service-name">Nginx Proxy Manager</span></a></li>
+                                    <li><a class="service-chip" href="https://github.com/dani-garcia/vaultwarden" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/vaultwarden.svg" alt="" width="24" height="24"></span><span class="service-name">Vaultwarden</span></a></li>
+                                    <li><a class="service-chip" href="https://uptime.kuma.pet/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/uptime-kuma.svg" alt="" width="24" height="24"></span><span class="service-name">Uptime Kuma</span></a></li>
+                                    <li><a class="service-chip" href="https://coder.com/docs/code-server" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/code-server.svg" alt="" width="24" height="24"></span><span class="service-name">Code Server<small data-i18n="homelab.codeServerNote">dla botów Discord</small></span></a></li>
+                                </ul>
+                            </div>
+                            <div class="device-card service-panel">
+                                <div class="device-title"><span class="card-icon"><i class="ph ph-hard-drives"></i></span><h3 data-i18n="homelab.svc.truenas">TrueNAS · Serwer główny</h3></div>
+                                <ul class="service-list">
+                                    <li><a class="service-chip" href="https://www.portainer.io/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/portainer.svg" alt="" width="24" height="24"></span><span class="service-name">Portainer</span></a></li>
+                                    <li><a class="service-chip" href="https://craftycontrol.com/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/crafty-controller.svg" alt="" width="24" height="24"></span><span class="service-name">Crafty Controller</span></a></li>
+                                    <li><a class="service-chip" href="https://github.com/Suwayomi/Suwayomi-Server" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/suwayomi.svg" alt="" width="24" height="24"></span><span class="service-name">Suwayomi</span></a></li>
+                                    <li><a class="service-chip" href="https://odysseus-dev.github.io/odysseus/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/odysseus.svg" alt="" width="24" height="24"></span><span class="service-name">Odysseus</span></a></li>
+                                    <li><a class="service-chip" href="https://www.comfy.org/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/comfyui.svg" alt="" width="24" height="24"></span><span class="service-name">ComfyUI</span></a></li>
+                                    <li><a class="service-chip" href="https://ollama.com/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/ollama.svg" alt="" width="24" height="24"></span><span class="service-name">Ollama</span></a></li>
+                                    <li><a class="service-chip" href="https://docs.searxng.org/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/searxng.svg" alt="" width="24" height="24"></span><span class="service-name">SearXNG</span></a></li>
+                                    <li><a class="service-chip" href="https://jellyfin.org/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/jellyfin.svg" alt="" width="24" height="24"></span><span class="service-name">Jellyfin</span></a></li>
+                                    <li><a class="service-chip" href="https://github.com/jmbannon/ytdl-sub" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/yt-dlp.svg" alt="" width="24" height="24"></span><span class="service-name">ytdl-sub</span></a></li>
+                                    <li><a class="service-chip" href="https://syncthing.net/" target="_blank" rel="noopener"><span class="service-icon"><img src="images/services/syncthing.svg" alt="" width="24" height="24"></span><span class="service-name">Syncthing</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- TAB: CV -->
+                <section id="tab-cv" class="tab-panel">
+                    <div class="tab-header">
+                        <h2>Curriculum Vitae</h2>
+                        <p data-i18n="cv.subtitle">Wykształcenie, doświadczenie oraz umiejętności techniczne</p>
+                    </div>
+                    <div class="placeholder-box">
+                        <p data-i18n="cv.placeholder">Sekcja CV jest w trakcie przygotowania.</p>
+                    </div>
+                </section>
+
+                <!-- TAB: LINKI -->
+                <section id="tab-linki" class="tab-panel">
+                    <div class="tab-header">
+                        <h2 data-i18n="links.title">Linki i Social Media</h2>
+                        <p data-i18n="links.subtitle">Media społecznościowe, kontakt i inne miejsca w sieci</p>
+                    </div>
+                    <div class="placeholder-box">
+                        <p data-i18n="links.placeholder">Sekcja z odnośnikami społecznościowymi wkrótce się tutaj pojawi.</p>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuIcon = document.getElementById('menu-icon');
+        const sidebarMenu = document.getElementById('sidebar-menu');
+        const layout = document.getElementById('layout');
+        const sidebar = document.getElementById('sidebar');
+        const mainContent = document.getElementById('main-content');
+        const sidebarProfile = document.getElementById('sidebar-profile');
+
+        function closeMobileMenu() {
+            if (!sidebarMenu) return;
+            sidebarMenu.classList.remove('open');
+            menuToggle.setAttribute('aria-expanded', 'false');
+            menuIcon.className = 'ph ph-list';
+        }
+
+        if (menuToggle && sidebarMenu) {
+            menuToggle.addEventListener('click', () => {
+                const isOpen = sidebarMenu.classList.toggle('open');
+                menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                menuIcon.className = isOpen ? 'ph ph-x' : 'ph ph-list';
+            });
+        }
+
+        // Keep desktop layout centered while ensuring tall tabs start at the avatar top and never scroll above it
+        function updateLayoutAlignment() {
+            if (window.innerWidth <= 900) {
+                mainContent.classList.remove('is-scrollable');
+                layout.style.removeProperty('--avatar-top');
+                return;
+            }
+            mainContent.classList.remove('is-scrollable');
+            const sidebarRect = sidebar.getBoundingClientRect();
+            const avatarTop = Math.max(20, Math.round(sidebarRect.top));
+            layout.style.setProperty('--avatar-top', avatarTop + 'px');
+
+            const activePanel = document.querySelector('.tab-panel.active');
+            const contentH = activePanel ? activePanel.scrollHeight : 0;
+            if (contentH > sidebarRect.height + 8) {
+                mainContent.classList.add('is-scrollable');
+            }
+        }
+
+        // Forward wheel scrolling from anywhere on the desktop viewport into the scrollable tab panel
+        window.addEventListener('wheel', (e) => {
+            if (window.innerWidth <= 900) return;
+            if (!mainContent.classList.contains('is-scrollable')) return;
+            if (!mainContent.contains(e.target)) {
+                mainContent.scrollTop += e.deltaY;
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        window.addEventListener('resize', updateLayoutAlignment);
+
+        // Tab navigation
+        const navButtons = document.querySelectorAll('.nav-item');
+        const tabPanels = document.querySelectorAll('.tab-panel');
+        const validTabs = ['start', 'projekty', 'homelab', 'cv', 'linki'];
+
+        function switchTab(tabId) {
+            if (tabId === 'specyfikacja' || tabId === 'specs') tabId = 'homelab';
+            if (tabId === 'projects') tabId = 'projekty';
+            if (tabId === 'links') tabId = 'linki';
+            if (!validTabs.includes(tabId)) tabId = 'start';
+
+            navButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.tab === tabId);
+            });
+            tabPanels.forEach(panel => {
+                panel.classList.toggle('active', panel.id === 'tab-' + tabId);
+            });
+            mainContent.scrollTop = 0;
+            window.scrollTo(0, 0);
+            closeMobileMenu();
+            updateLayoutAlignment();
+        }
+
+        navButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.dataset.tab;
+                switchTab(tabId);
+                history.replaceState(null, '', tabId === 'start' ? window.location.pathname : '#' + tabId);
+            });
+        });
+
+        if (sidebarProfile) {
+            sidebarProfile.addEventListener('click', () => {
+                switchTab('start');
+                history.replaceState(null, '', window.location.pathname);
+            });
+        }
+
+        const initialHash = window.location.hash.replace('#', '').toLowerCase();
+        if (initialHash) {
+            switchTab(initialHash);
+        }
+
+        // Language switching (PL / EN)
+        const translations = {
+            pl: {
+                'nav.start': 'Start',
+                'nav.projects': 'Projekty',
+                'nav.homelab': 'Specyfikacja',
+                'nav.cv': 'CV',
+                'nav.links': 'Linki',
+                'hero.greeting': 'Cześć, jestem Dawid',
+                'hero.lead': 'Zajmuję się tworzeniem stron oraz aplikacji internetowych. Interesuję się również sztuczną inteligencją (AI) i uczeniem maszynowym - szczególnie wykorzystaniem modeli AI w praktycznych projektach. Prywatnie jestem entuzjastą homelabingu oraz własnej infrastruktury serwerowej (self-hosting).',
+                'start.profilesTitle': 'Podstawowe profile i repozytoria',
+                'start.ghMainDesc': 'Główne konto GitHub - bieżący kod, projekty własne i zespołowe',
+                'start.ghAcadDesc': 'Konto do celów akademickich - praca magisterska, replikacje artykułów',
+                'start.hfDesc': 'Konto Hugging Face - eksploracja i testy modeli AI',
+                'badge.main': 'główny',
+                'badge.acadShort': 'akademicki',
+                'projects.title': 'Zbiór moich projektów',
+                'projects.subtitle': 'Aplikacje internetowe, projekty akademickie oraz realizacje zespołowe',
+                'projects.domainSection': 'Projekty webowe na domenie (110187.xyz)',
+                'projects.mtEng': 'Aplikacja do zarządzania listą filmów i seriali - praca inżynierska',
+                'projects.mtMsc': 'Aplikacja do zarządzania listą filmów i seriali + rekomendacje - praca magisterska',
+                'projects.spaceInvaders': 'Gra Space Invaders w wersji webowej - Projekt zaliczeniowy',
+                'projects.acadCalendar': 'Aplikacja kalendarza akademickiego',
+                'projects.ghPagesSection': 'Projekty webowe na GitHub Pages',
+                'projects.mechaKlub': 'Projekt zaliczeniowy - optymalizacja stron (analiza SEO)',
+                'projects.ciphers': 'Projekt zespołowy - interaktywne demo szyfrów historycznych',
+                'projects.coauthors': 'Współ-autorzy:',
+                'projects.otherSection': 'Inne projekty',
+                'projects.otherPlaceholder': 'Miejsce na kolejne realizacje i projekty niewebowe.',
+                'homelab.title': 'Specyfikacja i homelab',
+                'homelab.subtitle': 'Sprzęt, infrastruktura oraz usługi, które utrzymuję na własnych serwerach',
+                'homelab.hardwareSection': 'Specyfikacja sprzętowa',
+                'homelab.dev.pc': 'Główny komputer',
+                'homelab.dev.server': 'Serwer główny',
+                'homelab.dev.tiny': 'Serwer drugi',
+                'homelab.dev.laptop': 'Laptop',
+                'homelab.dev.peripherals': 'Peryferia',
+                'homelab.svc.dietpi': 'DietPi · Dell Wyse 5070',
+                'homelab.svc.truenas': 'TrueNAS · Serwer główny',
+                'homelab.codeServerNote': 'dla botów Discord',
+                'homelab.planned': 'Planowana zmiana (grudzień)',
+                'homelab.tvNote': 'czasem używany jako trzeci monitor',
+                'spec.os': 'System',
+                'spec.cpu': 'Procesor',
+                'spec.gpu': 'Karta graficzna',
+                'spec.ram': 'Pamięć RAM',
+                'spec.board': 'Płyta główna',
+                'spec.psu': 'Zasilacz',
+                'spec.case': 'Obudowa',
+                'spec.cooling': 'Chłodzenie',
+                'spec.storage': 'Dysk',
+                'spec.model': 'Model',
+                'spec.monitor': 'Monitor',
+                'spec.tv': 'Telewizor',
+                'spec.speakers': 'Głośniki',
+                'spec.headset': 'Słuchawki',
+                'spec.mic': 'Mikrofon',
+                'spec.keyboard': 'Klawiatura',
+                'spec.mouse': 'Myszka',
+                'homelab.workloadSection': 'Usługi i workload',
+                'cv.subtitle': 'Wykształcenie, doświadczenie oraz umiejętności techniczne',
+                'cv.placeholder': 'Sekcja CV jest w trakcie przygotowania.',
+                'links.title': 'Linki i Social Media',
+                'links.subtitle': 'Media społecznościowe, kontakt i inne miejsca w sieci',
+                'links.placeholder': 'Sekcja z odnośnikami społecznościowymi wkrótce się tutaj pojawi.'
+            },
+            en: {
+                'nav.start': 'Home',
+                'nav.projects': 'Projects',
+                'nav.homelab': 'Specs',
+                'nav.cv': 'CV',
+                'nav.links': 'Links',
+                'hero.greeting': "Hi, I'm David",
+                'hero.lead': 'I build websites and web applications. I am also interested in artificial intelligence (AI) and machine learning - especially applying AI models in practical projects. In my free time, I am a homelab and self-hosting enthusiast.',
+                'start.profilesTitle': 'Core profiles & repositories',
+                'start.ghMainDesc': 'Main GitHub account - active code, personal and team projects',
+                'start.ghAcadDesc': "Academic account - Master's thesis, paper replications",
+                'start.hfDesc': 'Hugging Face account - exploring and testing AI models',
+                'badge.main': 'main',
+                'badge.acadShort': 'academic',
+                'projects.title': 'My Projects',
+                'projects.subtitle': 'Web applications, academic projects, and team collaborations',
+                'projects.domainSection': 'Web projects on domain (110187.xyz)',
+                'projects.mtEng': "Movie & TV series tracking web app - Bachelor's thesis (B.Eng.)",
+                'projects.mtMsc': "Movie & TV series tracking web app + AI recommendations - Master's thesis (M.Sc.)",
+                'projects.spaceInvaders': 'Web-based Space Invaders game - Course project',
+                'projects.acadCalendar': 'Academic calendar application',
+                'projects.ghPagesSection': 'Web projects on GitHub Pages',
+                'projects.mechaKlub': 'Course project - website optimization (SEO analysis)',
+                'projects.ciphers': 'Team project - interactive demo of historical ciphers',
+                'projects.coauthors': 'Co-authors:',
+                'projects.otherSection': 'Other projects',
+                'projects.otherPlaceholder': 'Space for upcoming builds and non-web projects.',
+                'homelab.title': 'Specs & homelab',
+                'homelab.subtitle': 'Hardware, infrastructure and services I run on my own servers',
+                'homelab.hardwareSection': 'Hardware specification',
+                'homelab.dev.pc': 'Main PC',
+                'homelab.dev.server': 'Main server',
+                'homelab.dev.tiny': 'Second server',
+                'homelab.dev.laptop': 'Laptop',
+                'homelab.dev.peripherals': 'Peripherals',
+                'homelab.svc.dietpi': 'DietPi · Dell Wyse 5070',
+                'homelab.svc.truenas': 'TrueNAS · Main server',
+                'homelab.codeServerNote': 'for Discord bots',
+                'homelab.planned': 'Planned change (December)',
+                'homelab.tvNote': 'sometimes used as a third monitor',
+                'spec.os': 'OS',
+                'spec.cpu': 'CPU',
+                'spec.gpu': 'GPU',
+                'spec.ram': 'RAM',
+                'spec.board': 'Motherboard',
+                'spec.psu': 'PSU',
+                'spec.case': 'Case',
+                'spec.cooling': 'Cooling',
+                'spec.storage': 'Storage',
+                'spec.model': 'Model',
+                'spec.monitor': 'Monitor',
+                'spec.tv': 'TV',
+                'spec.speakers': 'Speakers',
+                'spec.headset': 'Headset',
+                'spec.mic': 'Microphone',
+                'spec.keyboard': 'Keyboard',
+                'spec.mouse': 'Mouse',
+                'homelab.workloadSection': 'Services & workload',
+                'cv.subtitle': 'Education, experience, and technical skills',
+                'cv.placeholder': 'The CV section is currently under construction.',
+                'links.title': 'Links & Social Media',
+                'links.subtitle': 'Social media profiles, contact info, and other places online',
+                'links.placeholder': 'Social media and external links will appear here soon.'
+            }
+        };
+
+        const langButtons = document.querySelectorAll('.lang-btn');
+        const i18nElements = document.querySelectorAll('[data-i18n]');
+
+        function setLanguage(lang) {
+            const dict = translations[lang] || translations.pl;
+            document.documentElement.lang = lang;
+
+            i18nElements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (dict[key]) {
+                    el.textContent = dict[key];
+                }
+            });
+
+            langButtons.forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            try {
+                localStorage.setItem('lang', lang);
+            } catch (e) { /* ignore */ }
+            updateLayoutAlignment();
+        }
+
+        langButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                setLanguage(btn.dataset.lang);
+            });
+        });
+
+        let initialLang = null;
+        try {
+            initialLang = localStorage.getItem('lang');
+        } catch (e) { /* ignore */ }
+        if (initialLang !== 'pl' && initialLang !== 'en') {
+            const navLang = (navigator.language || 'pl').slice(0, 2).toLowerCase();
+            initialLang = navLang === 'en' ? 'en' : 'pl';
+        }
+        setLanguage(initialLang);
+        window.addEventListener('load', updateLayoutAlignment);
+    </script>
 </body>
 </html>

@@ -236,6 +236,50 @@ body {
     gap: 10px;
 }
 
+.lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 5px 10px;
+    align-self: flex-start;
+}
+
+.lang-icon {
+    font-size: 1rem;
+    color: #8890a0;
+    margin-right: 2px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: #778094;
+    font-family: inherit;
+    font-size: 0.78rem;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 5px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.lang-btn:hover {
+    color: #ffffff;
+}
+
+.lang-btn.active {
+    background: rgba(59, 130, 246, 0.22);
+    color: #60a5fa;
+}
+
+.lang-sep {
+    color: #444b5a;
+    font-size: 0.75rem;
+}
+
 /* Right Main Content */
 .main-content {
     flex: 1;
@@ -585,13 +629,7 @@ body {
 
 /* Short desktop viewports (e.g. 1080p laptops at 125% scaling): keep content within the sidebar height */
 @media (min-width: 901px) and (max-height: 820px) {
-    .layout {
-        padding-top: 20px;
-        padding-bottom: 20px;
-    }
-
     .sidebar {
-        top: 20px;
         gap: 16px;
     }
 
@@ -911,31 +949,41 @@ a.sidebar-profile {
     }
 }
 
-/* Desktop: pin the sidebar to the top instead of centering it inside tall pages */
+/* Desktop: keep layout centered, while tall tabs start at the avatar top and scroll within their area */
 html {
     overflow-x: hidden;
 }
 
+.sidebar-profile {
+    cursor: pointer;
+}
+
 @media (min-width: 901px) {
     .layout {
-        align-items: flex-start;
-        padding-top: clamp(20px, 5vh, 56px);
+        height: 100vh;
+        min-height: 100vh;
+        padding-top: 0;
+        padding-bottom: 0;
+        align-items: center;
     }
 
     .sidebar {
+        position: relative;
+        top: 0;
+    }
+
+    .main-content.is-scrollable {
         align-self: flex-start;
-        top: clamp(20px, 5vh, 56px);
-        max-height: calc(100vh - 40px);
+        justify-content: flex-start;
+        margin-top: var(--avatar-top, 48px);
+        height: calc(100vh - var(--avatar-top, 48px));
         overflow-y: auto;
+        padding-bottom: clamp(28px, 4.5vh, 64px);
         scrollbar-width: none;
     }
 
-    .sidebar::-webkit-scrollbar {
+    .main-content.is-scrollable::-webkit-scrollbar {
         display: none;
-    }
-
-    .main-content {
-        align-self: flex-start;
     }
 }
 
