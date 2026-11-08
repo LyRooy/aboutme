@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Dawid Łyczko">
+    <meta name="description" content="Dawid Łyczko (LyRooy) - web and application development, artificial intelligence (AI) and homelab.">
+    <meta property="og:title" content="LyRooy - Dawid Łyczko">
+    <meta property="og:description" content="Dawid Łyczko (LyRooy) - web and application development, artificial intelligence (AI) and homelab.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://110187.xyz/en/">
+    <meta property="og:locale" content="en_US">
+    <meta name="theme-color" content="#0b1120">
+    <title>LyRooy - Dawid Łyczko</title>
+    <link rel="canonical" href="https://110187.xyz/en/">
+    <link rel="alternate" hreflang="pl" href="https://110187.xyz/pl/">
+    <link rel="alternate" hreflang="en" href="https://110187.xyz/en/">
+    <link rel="alternate" hreflang="x-default" href="https://110187.xyz/">
+    <link rel="icon" href="/images/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/style.css?v=10">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+    <div class="layout">
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="sidebar-header">
+                    <a class="sidebar-profile" href="/en/">
+                        <div class="avatar">
+                            <img src="/images/avatar.jpg" alt="LyRooy">
+                        </div>
+                        <div class="sidebar-identity">
+                            <span class="sidebar-nick">LyRooy</span>
+                            <span class="sidebar-realname">Dawid Łyczko</span>
+                        </div>
+                    </a>
+
+                    <button class="hamburger-btn" id="menu-toggle" aria-label="Menu" aria-expanded="false">
+                        <i class="ph ph-list" id="menu-icon"></i>
+                    </button>
+                </div>
+
+                <div class="sidebar-menu" id="sidebar-menu">
+                    <nav class="sidebar-nav">
+                        <a class="nav-item active" href="/en/" aria-current="page">
+                            <span class="nav-item-icon"><i class="ph ph-sparkle"></i></span>
+                            <span class="nav-item-label">Home</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </a>
+                        <a class="nav-item" href="/en/projects/">
+                            <span class="nav-item-icon"><i class="ph ph-code"></i></span>
+                            <span class="nav-item-label">Projects</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </a>
+                        <a class="nav-item" href="/en/homelab/">
+                            <span class="nav-item-icon"><i class="ph ph-hard-drives"></i></span>
+                            <span class="nav-item-label">Specs</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </a>
+                        <a class="nav-item" href="/en/cv/">
+                            <span class="nav-item-icon"><i class="ph ph-read-cv-logo"></i></span>
+                            <span class="nav-item-label">CV</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </a>
+                        <a class="nav-item" href="/en/links/">
+                            <span class="nav-item-icon"><i class="ph ph-share-network"></i></span>
+                            <span class="nav-item-label">Links</span>
+                            <i class="ph ph-caret-right nav-item-arrow"></i>
+                        </a>
+                    </nav>
+
+                    <div class="mobile-menu-footer">
+                        <p>&copy; 2026 Dawid Łyczko (LyRooy)</p>
+                    </div>
+                </div>
+            </div>
+
+            <footer class="sidebar-footer">
+                <p>&copy; 2026 Dawid Łyczko (LyRooy)</p>
+            </footer>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-wrapper">
+
+                <section class="tab-panel active">
+                    <div class="hero-box">
+                        <div class="hero-badge">Web Development &bull; AI &bull; Homelab</div>
+                        <h2>Hi, I'm David <span class="hero-subname">(LyRooy)</span></h2>
+                        <p class="hero-lead">I build websites and web applications. I am also interested in artificial intelligence (AI) and machine learning - especially applying AI models in practical projects. In my free time, I am a homelab and self-hosting enthusiast.</p>
+                    </div>
+
+                    <div class="section">
+                        <div class="section-title">Core profiles &amp; repositories</div>
+                        <div class="quick-links-grid">
+                            <a class="card" href="https://github.com/lyrooy" target="_blank" rel="noopener">
+                                <div class="card-icon"><i class="ph ph-github-logo"></i></div>
+                                <div class="card-info">
+                                    <span class="card-title">github.com/lyrooy</span>
+                                    <span class="card-desc">Main GitHub account - active code, personal and team projects</span>
+                                </div>
+                                <div class="card-right">
+                                    <span class="badge badge-primary">main</span>
+                                    <i class="ph ph-arrow-up-right card-arrow"></i>
+                                </div>
+                            </a>
+
+                            <a class="card" href="https://github.com/lyczkod" target="_blank" rel="noopener">
+                                <div class="card-icon"><i class="ph ph-graduation-cap"></i></div>
+                                <div class="card-info">
+                                    <span class="card-title">github.com/lyczkod</span>
+                                    <span class="card-desc">Academic account - Master's thesis, paper replications</span>
+                                </div>
+                                <div class="card-right">
+                                    <span class="badge badge-neutral">academic</span>
+                                    <i class="ph ph-arrow-up-right card-arrow"></i>
+                                </div>
+                            </a>
+
+                            <a class="card" href="https://huggingface.co/LyRooy" target="_blank" rel="noopener">
+                                <div class="card-icon hf-icon"><i class="ph ph-brain"></i></div>
+                                <div class="card-info">
+                                    <span class="card-title">huggingface.co/LyRooy</span>
+                                    <span class="card-desc">Hugging Face account - exploring and testing AI models</span>
+                                </div>
+                                <div class="card-right">
+                                    <span class="badge badge-hf">Hugging Face</span>
+                                    <i class="ph ph-arrow-up-right card-arrow"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        (function () {
+            var toggle = document.getElementById('menu-toggle');
+            var icon = document.getElementById('menu-icon');
+            var menu = document.getElementById('sidebar-menu');
+            if (!toggle || !menu) return;
+            toggle.addEventListener('click', function () {
+                var isOpen = menu.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                icon.className = isOpen ? 'ph ph-x' : 'ph ph-list';
+            });
+        })();
+    </script>
+</body>
+</html>
