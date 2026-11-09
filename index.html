@@ -13,7 +13,7 @@
     <title>LyRooy - Dawid Łyczko</title>
     <link rel="canonical" href="https://110187.xyz/">
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="style.css?v=14">
+    <link rel="stylesheet" href="style.css?v=15">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 </head>
 <body>
@@ -464,7 +464,7 @@
 
         window.addEventListener('resize', updateLayoutAlignment);
 
-        // Tab navigation
+        // Tab navigation (SPA - URL remains clean without hash)
         const navButtons = document.querySelectorAll('.nav-item');
         const tabPanels = document.querySelectorAll('.tab-panel');
         const validTabs = ['start', 'projekty', 'homelab', 'cv', 'linki'];
@@ -485,27 +485,51 @@
             window.scrollTo(0, 0);
             closeMobileMenu();
             updateLayoutAlignment();
+
+            try {
+                sessionStorage.setItem('activeTab', tabId);
+            } catch (e) { /* ignore */ }
         }
 
         navButtons.forEach(btn => {
             btn.addEventListener('click', () => {
-                const tabId = btn.dataset.tab;
-                switchTab(tabId);
-                history.replaceState(null, '', tabId === 'start' ? window.location.pathname : '#' + tabId);
+                switchTab(btn.dataset.tab);
             });
         });
 
         if (sidebarProfile) {
             sidebarProfile.addEventListener('click', () => {
                 switchTab('start');
-                history.replaceState(null, '', window.location.pathname);
+            });
+            sidebarProfile.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    switchTab('start');
+                }
             });
         }
 
-        const initialHash = window.location.hash.replace('#', '').toLowerCase();
-        if (initialHash) {
-            switchTab(initialHash);
+        // On load: support legacy incoming hash links once, then clean the address bar to keep only https://110187.xyz/
+        let initialTab = 'start';
+        const incomingHash = window.location.hash.replace('#', '').toLowerCase();
+        if (incomingHash && validTabs.includes(incomingHash)) {
+            initialTab = incomingHash;
+        } else {
+            try {
+                const saved = sessionStorage.getItem('activeTab');
+                if (saved && validTabs.includes(saved)) {
+                    initialTab = saved;
+                }
+            } catch (e) { /* ignore */ }
         }
+
+        if (window.location.hash) {
+            try {
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+            } catch (e) { /* ignore */ }
+        }
+
+        switchTab(initialTab);
 
         // Language switching (PL / EN)
         const translations = {
